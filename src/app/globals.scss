@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #c6ad8f;
+  --secondary-color: #425664;
+  --tertiary-color: #718089;
+  --white: #ffffff;
+}
+
+body {
+  background: #fff url("/bg.png") repeat;
+  background-size: cover;
+}
+
+input,
+textarea {
+  outline: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1440px) {
+  }
+  @media (min-width: 1920px) {
+  }
+  .row {
+    padding: 0 24px;
+    @media (min-width: 768px) {
+      padding: 0 60px;
+    }
+    @media (min-width: 1440px) {
+      padding: 0 93px;
+    }
+    @media (min-width: 1920px) {
+      padding: 0 125px;
+    }
+  }
+}
+
+.center-flex {
+  @apply flex items-center justify-center;
+}
+
+.icon {
+  div {
+    width: 100%;
+    height: 100%;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.page {
+  @apply pt-[40px] md:pt-[59px] xl:pt-[75px] 2xl:pt-[100px] flex-grow;
+}
+
+.page__title {
+  @apply font-bold text-[22px] 2xl:text-[29px] leading-[20px] 2xl:leading-[26px] uppercase text-[#484f56] mb-[25px] md:mb-[36px] 2xl:mb-[40px];
+}
+
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 12px;
+  padding-bottom: 8px;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: l2 2s linear infinite;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50px;
+}
+.loader:before {
+  content:"Загрузка..."
+}
+@keyframes l2 {to{background-size: 100% 3px}}

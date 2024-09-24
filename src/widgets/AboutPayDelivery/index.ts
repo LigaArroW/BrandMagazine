@@ -1,0 +1,1 @@
+export {AboutPayDelivery} from "./AboutPayDelivery";
