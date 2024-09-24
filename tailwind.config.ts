@@ -12,7 +12,9 @@ const config: Config = {
       backgroundImage: {
         spiner: "linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat"
       }
+      
     },
+    
     screens: {
       'md': "768px",
       'lg': '1024px',
@@ -26,3 +28,5 @@ const config: Config = {
   plugins: [],
 };
 export default config;
+
+
