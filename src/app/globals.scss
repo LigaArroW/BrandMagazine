@@ -86,5 +86,17 @@ textarea {
 @keyframes l2 {to{background-size: 100% 3px}}
 
 @layer components {
-  
+  .spinner {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    border-top-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
 }

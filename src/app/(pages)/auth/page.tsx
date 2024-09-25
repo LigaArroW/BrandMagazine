@@ -70,6 +70,7 @@ export default function Auth() {
                                 <Checkbox />
                                 <p className="text-[13px] lg:text-[8px] 2xl:text-[11px]">Запомнить меня</p>
                             </label>
+                            <Button type="submit" isForms >Регистрация</Button>
                         </form>
                     </div>
                     <div className="flex gap-[14px] flex-col mb-[49px] md:mb-[60px] lg:w-full lg:mb-[30px] 2xl:gap-[19px]">

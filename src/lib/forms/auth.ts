@@ -1,7 +1,7 @@
 'use server'
 
 import { IAuth } from "@/types/auth";
-import { sign } from "../auth/authAction";
+import { login, sign } from "../auth/authAction";
 
 
 
@@ -15,7 +15,9 @@ export async function AuthAction(previousState: IAuth, data: FormData) {
         const email = data.get('email') as string
         const password = data.get('password') as string
 
+        const log = await login(email, password);
 
+        if (!log.id) return { success: false, error: log.email as string, message: '' }
 
     } catch (error) {
 
