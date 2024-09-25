@@ -63,7 +63,7 @@ textarea {
 }
 
 .page__title {
-  @apply font-bold text-[22px] 2xl:text-[29px] leading-[20px] 2xl:leading-[26px] uppercase text-[#484f56] mb-[25px] md:mb-[36px] 2xl:mb-[40px];
+  @apply font-bold text-[22px] 2xl:text-[29px] leading-[20px] 2xl:leading-[26px] uppercase text-tertiary mb-[25px] md:mb-[36px] 2xl:mb-[40px];
 }
 
 .loader {
@@ -90,8 +90,17 @@ textarea {
 }
 
 @layer components {
-  .page__title {
-    @apply font-bold text-[22px] 2xl:text-[29px] leading-[20px] 2xl:leading-[26px] uppercase text-[#484f56] mb-[25px] md:mb-[36px] 2xl:mb-[40px];
+  .page__titles {
+    @apply font-bold
+     text-[22px]
+     leading-[20px] 
+     uppercase 
+     text-tertiary 
+     mb-[25px] 
+     2xl:text-[32px] 2xl:leading-[26px] 2xl:my-1920
+     xl:text-[24px] xl:my-1440
+     lg:my-768
+     md:text-[21px] md:my-428;
   }
   .spinner {
     width: 30px;
