@@ -81,11 +81,18 @@ textarea {
   top: 50px;
 }
 .loader:before {
-  content:"Загрузка..."
+  content: "Загрузка...";
 }
-@keyframes l2 {to{background-size: 100% 3px}}
+@keyframes l2 {
+  to {
+    background-size: 100% 3px;
+  }
+}
 
 @layer components {
+  .page__title {
+    @apply font-bold text-[22px] 2xl:text-[29px] leading-[20px] 2xl:leading-[26px] uppercase text-[#484f56] mb-[25px] md:mb-[36px] 2xl:mb-[40px];
+  }
   .spinner {
     width: 30px;
     height: 30px;

@@ -2,41 +2,45 @@
 
 import { sign } from "@/lib/auth/authAction";
 import { AuthAction, RegistationAction } from "@/lib/forms/auth";
+import { setToken } from "@/lib/token/tokenAction";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { Form } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 import { Textarea } from "@/shared/ui/textarea";
+import { TokenNames } from "@/types/auth";
 import clsx from "clsx";
-import { error } from "console";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 
 
 
 export default function Auth() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
+    const router = useRouter();
     const [checked, setChecked] = useState(false);
     const [stateReg, actionReg] = useFormState(RegistationAction, {
         success: false,
         error: '',
         message: '',
     })
+    const [stateAuth, actionAuth] = useFormState(AuthAction, {
+        success: false,
+        error: '',
+        message: '',
+    })
 
     useEffect(() => {
+        if (stateAuth.success && stateAuth.token) {
+            setToken(stateAuth.token.access, TokenNames.access)
+            setToken(stateAuth.token.refresh, TokenNames.refresh)
+
+            router.push('/')
+        }
 
 
+    }, [stateAuth])
 
-    }, [])
-
-
-
-    const onSubmit = () => {
-
-
-    }
 
 
     return (
@@ -57,12 +61,12 @@ export default function Auth() {
                             </label>
                             <Button type="submit">Войти</Button>
                         </Form> */}
-                        <form action="" className="flex flex-col">
+                        <form action={actionAuth} className="flex flex-col">
                             <div className="flex gap-[9px] md:gap-[16px] mb-[12px] max-[375px]:flex-wrap 2xl:gap-[35px] 2xl:mb-[16px]">
-                                <input type="text" name="login" placeholder="Email" className={clsx(
+                                <input type="text" name="login" placeholder="Email" required className={clsx(
                                     'bg-inherit border border-[#d9d9d9] py-[11px] px-[10px] text-[12px] text-black/70 w-full 2xl:p-[14px] 2xl:text-[16px]'
                                 )} />
-                                <input type="password" name="password" placeholder="Пароль" className={clsx(
+                                <input type="password" name="password" placeholder="Пароль" required className={clsx(
                                     'bg-inherit border border-[#d9d9d9] py-[11px] px-[10px] text-[12px] text-black/70 w-full 2xl:p-[14px] 2xl:text-[16px]'
                                 )} />
                             </div>
@@ -70,6 +74,7 @@ export default function Auth() {
                                 <Checkbox />
                                 <p className="text-[13px] lg:text-[8px] 2xl:text-[11px]">Запомнить меня</p>
                             </label>
+                            {!stateAuth.success && stateAuth.error && <p className="text-red-500">{stateAuth.error}</p>}
                             <Button type="submit" isForms >Регистрация</Button>
                         </form>
                     </div>

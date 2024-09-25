@@ -11,13 +11,19 @@ const config: Config = {
       },
       backgroundImage: {
         spiner: "linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat"
+      },
+      margin: {
+        '1920': '84px',
+        '1440': '63px',
+        '768': '58px',
+        '428': '31px'
+
       }
-      
     },
-    
+
     screens: {
-      'md': "768px",
-      'lg': '1024px',
+      'md': "428px",
+      'lg': '768px',
       'xl': '1440px',
       '2xl': '1920px'
     }
