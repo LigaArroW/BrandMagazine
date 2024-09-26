@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: process.env.NEXT_PUBLIC_BACKEND_URL.replace(/(^\w+:|^)\/\//, ''),
+        pathname: "/**",
+      },
+    ],
+  },
   async headers() {
     return [
       {
@@ -15,6 +29,10 @@ const nextConfig = {
           {
             key: "Access-Control-Allow-Origin",
             value: "https://replikstore.shop",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "http://localhost:3000",
           },
           // { key: 'Access-Control-Allow-Origin', value: 'https://sexgirl.kz/api' },
           //{ key: 'Access-Control-Allow-Origin', value: 'http://78.155.194.209:8001' }, // Замените на ваш домен
