@@ -8,7 +8,7 @@ import { NextResponse } from 'next/server';
 const publicDir = path.join(process.cwd(), 'public');
 
 
-interface IImage{
+interface IImage {
     src: string;
     alt: string;
 }
@@ -22,8 +22,8 @@ export async function GET(request: Request) {
     if (images.length === 0) {
         return Response.json({ images: [] });
     }
-    console.log(123);
-    
+
+
     const imagesData = images.map((file) => {
         return {
             src: `/brands/${file}`,

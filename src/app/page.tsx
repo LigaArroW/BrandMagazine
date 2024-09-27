@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Bag from '../../public/home/bag-1-check.png'
 import Eye from '../../public/home/bag-2-check.png'
-// import Brands from '../../public/brands/*.png'
+import Brands from '../../public/brands/*.png'
 import Link from "next/link";
 import { getImages } from "@/lib/images/images";
 import { useEffect, useState } from "react";
@@ -15,6 +15,7 @@ export default function Home() {
   // console.log("🚀 ~ Home ~ images:", images)
   const [img, setImg] = useState([])
   console.log("🚀 ~ Home ~ img:", img)
+
 
   useEffect(() => {
 
@@ -82,7 +83,7 @@ export default function Home() {
 
       <div className="w-full">
 
-
+ 
 
 
 
