@@ -1,0 +1,16 @@
+export { default as brand1 } from './brands-1.png';
+export { default as brand2 } from './brands-2.png';
+export { default as brand3 } from './brands-3.png';
+export { default as brand4 } from './brands-4.png';
+export { default as brand5 } from './brands-5.png';
+export { default as brand6 } from './brands-6.png';
+export { default as brand7 } from './brands-7.png';
+export { default as brand8 } from './brands-8.png';
+export { default as brand9 } from './brands-9.png';
+export { default as brand10 } from './brands-10.png';
+export { default as brand11 } from './brands-11.png';
+export { default as brand12 } from './brands-12.png';
+export { default as brand13 } from './brands-13.png';
+export { default as brand14 } from './brands-14.png';
+export { default as brand15 } from './brands-15.png';
+export { default as brand16 } from './brands-16.png';

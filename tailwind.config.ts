@@ -8,12 +8,14 @@ const config: Config = {
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',
         tertiary: 'var(--tertiary-color)',
-        white: 'var(--white)'
+        white: 'var(--white)',
+        heavyGray: 'var(--heavy-gray)',
+        black: 'var(--black)'
       },
       backgroundImage: {
         spiner: "linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat",
-        bag:'url("./public/home/bag-1.png")',
-        eyeBag:'url("./public/home/bag-2.png")',
+        bag: 'url("./public/home/bag-1.png")',
+        eyeBag: 'url("./public/home/bag-2.png")',
 
       },
       margin: {
@@ -24,7 +26,12 @@ const config: Config = {
 
       }
     },
+    fontFamily: {
+      'roboto': ['Roboto', 'sans-serif'],
+      "atyptext": ["Atyptext", "sans-serif"],
+      "AlibabaPuhuiti": ["AlibabaPuhuiti", "sans-serif"]
 
+    },
     screens: {
       'md': "428px",
       'lg': '768px',

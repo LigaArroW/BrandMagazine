@@ -7,6 +7,8 @@
   --secondary-color: #425664;
   --tertiary-color: #718089;
   --white: #ffffff;
+  --heavy-gray: #484f56;
+  --black: #000000;
 }
 
 body {
@@ -89,6 +91,83 @@ textarea {
   }
 }
 
+@layer base {
+  @font-face {
+    font-family: AlibabaPuhuiti;
+    src: url(/public/fonts/ALIBABAPUHUITI-2-105-HEAVY.OTF) format("otf");
+    font-display: swap;
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: AlibabaPuhuiti;
+    src: url(/public/fonts/ALIBABAPUHUITI-2-65-MEDIUM.TTF) format("otf");
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: AlibabaPuhuiti;
+    src: url(/public/fonts/ALIBABAPUHUITI-2-105-LIGHT.OTF) format("otf");
+    font-display: swap;
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: AlibabaPuhuiti;
+    src: url(/public/fonts/ALIBABAPUHUITI-2-55-REGULAR.OTF) format("otf");
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: AlibabaPuhuiti;
+    src: url(/public/fonts/ALIBABAPUHUITI-2-85-BOLD.OTF) format("otf");
+    font-display: swap;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Atyptext;
+    src: url(/public/fonts/ATYPTEXT-MEDIUM.TTF) format("ttf");
+    font-display: swap;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Atyptext;
+    src: url(/public/fonts/ATYPTEXT-REGULAR.TTF) format("ttf");
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Atyptext;
+    src: url(/public/fonts/ATYPTEXT-SEMIBOLD.TTF) format("ttf");
+    font-display: swap;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Atyptext;
+    src: url(/public/fonts/ATYPTEXT-THINITALIC.TTF) format("ttf");
+    font-display: swap;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  html {
+    font-family: "AlibabaPuhuiti", system-ui, sans-serif;
+  }
+}
+
 @layer components {
   .page__titles {
     @apply font-bold
@@ -114,5 +193,19 @@ textarea {
         transform: rotate(360deg);
       }
     }
+  }
+  .title {
+    @apply 
+    font-[700]
+    text-heavyGray
+    text-[23px]
+    xl:text-[30px]
+    lg:text-[24px]
+    md:text-[39px]
+    uppercase
+  }
+  .bg-letter {
+    background: #fff url("/bg.png") repeat;
+    background-size: cover;
   }
 }
