@@ -195,17 +195,19 @@ textarea {
     }
   }
   .title {
-    @apply 
-    font-[700]
+    @apply font-[700]
     text-heavyGray
     text-[23px]
     xl:text-[30px]
     lg:text-[24px]
     md:text-[39px]
-    uppercase
+    uppercase;
   }
   .bg-letter {
     background: #fff url("/bg.png") repeat;
     background-size: cover;
+  }
+  .active-page {
+    @apply text-primary;
   }
 }

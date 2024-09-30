@@ -8,28 +8,30 @@ import { useEffect, useState } from "react";
 import { getProducts } from "@/lib/catalog/catalogAction";
 import { IResponseProducts } from "@/types/product";
 import CardProduct from "../CardProduct/CardProduct";
+import Pagination from 'react-paginate';
 
 const Catalog = () => {
 
     const { filter, setFilter } = useCatalogContext();
     const [products, setProducts] = useState<IResponseProducts>({} as IResponseProducts);
     const [isSortOpen, setIsSortOpen] = useState(false);
+    const [totalPages, setTotalPages] = useState(0);
 
     const loadProducts = async () => {
+
 
         const qu = queryString.stringify(filter, {
             skipEmptyString: true,
             skipNull: true,
         });
-        console.log(qu);
         const productsData = await getProducts(qu);
-        console.log("🚀 ~ loadProducts ~ productsData:", productsData)
         setProducts(productsData);
-
+        setTotalPages(Math.ceil(productsData.count / filter.limit) - 1);
     }
 
     useEffect(() => {
         loadProducts();
+
     }, [filter]);
 
 
@@ -102,14 +104,14 @@ const Catalog = () => {
                             className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9] 
                                 ${filter.ordering.includes('total_order_count') && "underline underline-offset-4"}
                                 `}
-                            onClick={() => { setFilter({ ...filter, ordering: 'total_order_count' }), setIsSortOpen(false) }}
+                            onClick={() => { setFilter({ ...filter, ordering: 'total_order_count', offset: null }), setIsSortOpen(false) }}
                         >По популярности
                         </li>
                         <li
                             className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9] 
                                 ${filter.ordering.includes('created_at') && "underline underline-offset-4"}
                                 `}
-                            onClick={() => { setFilter({ ...filter, ordering: 'created_at' }), setIsSortOpen(false) }}
+                            onClick={() => { setFilter({ ...filter, ordering: 'created_at', offset: null }), setIsSortOpen(false) }}
                         >По новизне
                         </li>
                         <li
@@ -118,9 +120,9 @@ const Catalog = () => {
                                 `}
                             onClick={() => {
                                 if (!filter.ordering.startsWith('-')) {
-                                    setFilter({ ...filter, ordering: filter.ordering as IOrdering })
+                                    setFilter({ ...filter, offset: null, ordering: filter.ordering as IOrdering })
                                 } else {
-                                    setFilter({ ...filter, ordering: filter.ordering.slice(1) as IOrdering })
+                                    setFilter({ ...filter, offset: null, ordering: filter.ordering.slice(1) as IOrdering })
                                 }
                                 setIsSortOpen(false)
                             }}
@@ -157,12 +159,17 @@ const Catalog = () => {
                 ))}
             </div>
 
-            <div className="w-full flex justify-center gap-24 mb-[56px]">
-                <ul>
-                    <li>
+            <div className="w-full flex justify-center items-center gap-24 mb-[56px]">
+                <Pagination
+                    pageCount={totalPages}
+                    pageRangeDisplayed={2}
+                    previousLabel={null}
+                    nextLabel={null}
+                    activeClassName="active-page"
+                    onPageChange={(page) => setFilter({ ...filter, offset: (page.selected + 1) * filter.limit })}
+                    className="flex gap-[52px]"
 
-                    </li>
-                </ul>
+                />
 
                 <Icon
                     src="/icon/arrow-next.svg"

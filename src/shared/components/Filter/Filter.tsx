@@ -106,7 +106,7 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                         type="text"
                         value={filter.brand}
                         placeholder="Поиск"
-                        onChange={(e) => setFilter({ ...filter, brand: e.target.value.toLowerCase() })}
+                        onChange={(e) => setFilter({ ...filter, offset: null, brand: e.target.value.toLowerCase() })}
                         className="w-full h-full bg-[#D9D9D9] pl-8  placeholder:absolute placeholder:right-2 placeholder:top-1/2 placeholder:-translate-y-1/2  placeholder:text-heavyGray placeholder:font-[400] placeholder:leading-[10px] placeholder:text-center"
                     />
                 </label>
@@ -116,7 +116,7 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                 <h4 className="title mb-[33px]">Цвет</h4>
                 <div className="flex flex-wrap gap-[30px]">
                     {
-                        colors.map((color, index) => (
+                        colors.map((color) => (
                             <span
                                 key={color}
                                 className={`uppercase 
@@ -130,9 +130,9 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                                       ${filter.colors.includes(color) ? "text-primary" : "text-heavyGray"}`}
                                 onClick={() => {
                                     if (filter.colors.includes(color)) {
-                                        setFilter({ ...filter, colors: filter.colors.filter((item) => item !== color) })
+                                        setFilter({ ...filter, offset: null, colors: filter.colors.filter((item) => item !== color) })
                                     } else {
-                                        setFilter({ ...filter, colors: [...filter.colors, color] })
+                                        setFilter({ ...filter, offset: null, colors: [...filter.colors, color] })
                                     }
 
                                 }
