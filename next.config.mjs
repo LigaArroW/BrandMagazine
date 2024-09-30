@@ -12,11 +12,13 @@ const nextConfig = {
       {
         protocol: "http",
         hostname: process.env.NEXT_PUBLIC_BACKEND_URL.replace(/(^\w+:|^)\/\//, ''),
+        // hostname: 'http://replikstore.shop',
         pathname: "/**",
       },
       {
         protocol: "https",
         hostname: process.env.NEXT_PUBLIC_BACKEND_URL.replace(/(^\w+:|^)\/\//, ''),
+        // hostname: 'https://replikstore.shop',
         pathname: "/**",
       },
     ],

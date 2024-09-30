@@ -6,6 +6,7 @@ import Filter from "@/shared/components/Filter/Filter";
 export default async function CatalogPage() {
     const colors = await getColors()
 
+
     return (
         <main className="container mt-[38px] md:mt-[62px] lg:mt-[75px] xl:mt-[100px]">
             <CatalogProvider>

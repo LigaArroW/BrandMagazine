@@ -4,7 +4,6 @@ import Bag from '../../public/home/bag-1-check.png'
 import Eye from '../../public/home/bag-2-check.png'
 
 import Link from "next/link";
-import { getImages } from "@/lib/images/images";
 import { useEffect, useState } from "react";
 import { BrandImages } from "@/shared/ui/brandImages/BrandImages";
 import { Icon } from "@/shared/ui/icon";
