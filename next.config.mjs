@@ -2,10 +2,16 @@
 
 const nextConfig = {
   images: {
+    domains: ["replikstore.shop"],
     remotePatterns: [
       {
         protocol: "http",
         hostname: "localhost",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: process.env.NEXT_PUBLIC_BACKEND_URL.replace(/(^\w+:|^)\/\//, ''),
         pathname: "/**",
       },
       {

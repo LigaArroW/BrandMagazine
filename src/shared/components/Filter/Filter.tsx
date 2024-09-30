@@ -106,7 +106,7 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                         type="text"
                         value={filter.brand}
                         placeholder="Поиск"
-                        onChange={(e) => setFilter({ ...filter, brand: e.target.value })}
+                        onChange={(e) => setFilter({ ...filter, brand: e.target.value.toLowerCase() })}
                         className="w-full h-full bg-[#D9D9D9] pl-8  placeholder:absolute placeholder:right-2 placeholder:top-1/2 placeholder:-translate-y-1/2  placeholder:text-heavyGray placeholder:font-[400] placeholder:leading-[10px] placeholder:text-center"
                     />
                 </label>

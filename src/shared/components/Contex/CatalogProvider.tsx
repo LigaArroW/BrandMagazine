@@ -2,21 +2,23 @@
 
 import { createContext, useContext, useState } from "react";
 
-enum IOrdering {
-    'created_at' = 'created_at',
-    '-created_at' = '-created_at',
-    'price' = 'price',
-    '-price' = '-price',
-    'total_order_count' = 'total_order_count',
-    '-total_order_count' = '-total_order_count'
-}
+// enum IOrdering {
+//     'created_at' = 'created_at',
+//     '-created_at' = '-created_at',
+//     'price' = 'price',
+//     '-price' = '-price',
+//     'total_order_count' = 'total_order_count',
+//     '-total_order_count' = '-total_order_count'
+// }
 
-enum ISex {
-    'women' = 'women',
-    'man' = 'man',
-    'unisex' = 'unisex',
-    'none' = ''
-}
+// enum ISex {
+//     'women' = 'women',
+//     'man' = 'man',
+//     'unisex' = 'unisex',
+//     'none' = null
+// }
+export type IOrdering = 'created_at' | '-created_at' | 'price' | '-price' | 'total_order_count' | '-total_order_count' | '';
+type ISex = 'women' | 'man' | 'unisex' | '';
 
 interface IFilter {
     brand: string
@@ -24,11 +26,11 @@ interface IFilter {
     colors: string[]
     limit: number
     name: string
-    offset: number
-    ordering: keyof typeof IOrdering
-    price_max: number
-    price_min: number
-    sex: keyof typeof ISex
+    offset: number | null
+    ordering: IOrdering
+    price_max: number | null
+    price_min: number | null
+    sex: ISex
 }
 
 
@@ -45,11 +47,11 @@ export const useCatalogContext = () => useContext(CatalogContext);
 
 const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
-    const [filter, setFilter] = useState<IFilter>({ brand: '', category: [], colors: [], limit: 100, name: '', offset: 0, ordering: 'created_at', price_max: 0, price_min: 0, sex: 'none' });
+    const [filter, setFilter] = useState<IFilter>({ brand: '', category: [], colors: [], limit: 16, name: '', offset: null, ordering: '', price_max: null, price_min: null, sex: '' });
 
 
     const resetFilter = () => {
-        setFilter({ brand: '', category: [], colors: [], limit: 100, name: '', offset: 0, ordering: 'created_at', price_max: 0, price_min: 0, sex: 'none' });
+        setFilter({ brand: '', category: [], colors: [], limit: 16, name: '', offset: null, ordering: '', price_max: null, price_min: null, sex: '' });
     };
 
 

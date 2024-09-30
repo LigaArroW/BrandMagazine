@@ -4,8 +4,15 @@ export interface IProduct {
     article: string,
     brand: string,
     price: string
+    main_image: string
 }
 
+export interface IResponseProducts {
+    count: number
+    next: string
+    previous: string
+    results: IProduct[]
+}
 
 interface IImage {
     image: string

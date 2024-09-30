@@ -1,6 +1,6 @@
 'use server'
 
-import { IFullProduct, IProduct } from "@/types/product"
+import { IFullProduct, IProduct, IResponseProducts } from "@/types/product"
 
 export async function getColors(): Promise<string[]> {
     try {
@@ -12,14 +12,18 @@ export async function getColors(): Promise<string[]> {
     }
 }
 
-export async function getProducts(querry: string = ''): Promise<IProduct[]> {
+export async function getProducts(querry: string = ''): Promise<IResponseProducts> {
     try {
-        const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products/' + `${querry ? '?' + querry : ''}`)
 
-        return await res.json() as IProduct[]
+        const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products/' + `?${querry}`, {
+            cache: 'no-store'
+        })
+        
+
+        return res.json() as Promise<IResponseProducts>
     } catch (error) {
         console.log(error)
-        return []
+        return {} as IResponseProducts
     }
 }
 

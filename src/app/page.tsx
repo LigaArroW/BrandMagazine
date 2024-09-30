@@ -14,23 +14,6 @@ import { OurAdvantages } from "@/widgets/OurAdvantages/OurAdvantages";
 
 
 export default function Home() {
-  // console.log(process.env.NEXT_PUBLIC_FRONT_URL + '/api/brand-images');
-  // const images = await getImages()
-  // console.log("🚀 ~ Home ~ images:", images)
-  const [img, setImg] = useState([])
-  console.log("🚀 ~ Home ~ img:", img)
-
-
-  useEffect(() => {
-
-    async function getImage() {
-      const images = await getImages()
-      setImg(images)
-    }
-
-    getImage()
-  }, [])
-
 
   return (
     <div className="container bg-white">
