@@ -42,3 +42,10 @@ export async function login(email: string, password: string) {
     }
 }
 
+export async function getIsAuth(token: string) {
+    try {
+        
+    } catch (error) {
+        
+    }
+}

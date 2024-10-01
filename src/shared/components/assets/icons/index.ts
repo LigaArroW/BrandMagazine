@@ -10,5 +10,6 @@ export * from './Delivery';
 export * from './Economy';
 export * from './FullButik';
 export * from './UsStar';
+export * from './Filter';
 
 

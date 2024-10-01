@@ -70,7 +70,7 @@ export const Header = () => {
                                         <Icon className="w-full min-w-[60px] h-[30px] md:w-[66px] md:h-[33px]" src="/icon/longArrow.svg" fill="#6D757E" />
                                     </div>
                                 ) : (
-                                    <div className="lg:hidden flex flex-col items-end gap-[12px] w-[39px]" onClick={() => setIsOpenMenu(true)}>
+                                    <div className="xl:hidden flex flex-col items-end gap-[12px] w-[39px]" onClick={() => setIsOpenMenu(true)}>
                                         <span className="block bg-white h-[2px] w-full max-w-[39px]"></span>
                                         <span className="block bg-white h-[2px] w-full max-w-[27px]"></span>
                                         <span className="block bg-white h-[2px] w-full max-w-[19px]"></span>

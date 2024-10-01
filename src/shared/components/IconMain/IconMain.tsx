@@ -12,6 +12,7 @@ import OriginalMaterials from "../assets/icons/OriginalMaterials"
 import Payment from "../assets/icons/Payment"
 import UsStar from "../assets/icons/UsStar"
 import clsx from "clsx"
+import Filter from "../assets/icons/Filter"
 
 
 export enum EIcon {
@@ -27,6 +28,7 @@ export enum EIcon {
     Economy = 'Economy',
     FullButik = 'FullButik',
     UsStar = 'UsStar',
+    Filter = 'Filter'
 }
 
 
@@ -63,6 +65,8 @@ const renderComponent = (name: EIcon) => {
             return <FullButik />
         case EIcon.UsStar:
             return <UsStar />
+        case EIcon.Filter:
+            return <Filter />
         default:
             return ''
     }
@@ -73,7 +77,7 @@ const IconMain: FC<IconProps> = ({ name, style, onClick }) => {
 
 
     return (
-        <span className="inline-block 2xl:w-[96px] 2xl:h-[92px] xl:w-[69px] xl:h-[69px] md:w-[50px] md:h-[50px]" onClick={onClick} >
+        <span className={`inline-block ${style ? style : ' 2xl:w-[96px] 2xl:h-[92px] xl:w-[69px] xl:h-[69px] md:w-[50px] md:h-[50px]'}`} onClick={onClick} >
             {renderComponent(name)}
         </span>
     );
