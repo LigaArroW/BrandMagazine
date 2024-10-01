@@ -12,6 +12,8 @@ export interface IResponseProducts {
     next: string
     previous: string
     results: IProduct[]
+    max_product_price?: number
+    min_product_price?: number
 }
 
 interface IImage {
@@ -29,3 +31,15 @@ export interface IFullProduct extends Omit<IProduct, 'id' | 'article'> {
     main_image: string
     other_images: IImage[]
 }
+
+export interface ISubCategory {
+    Сумки: number,
+    Аксессуары: number
+}
+
+
+export interface ICategory {
+    Мужское: ISubCategory,
+    Женское: ISubCategory
+}
+

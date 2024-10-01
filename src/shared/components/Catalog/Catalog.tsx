@@ -20,7 +20,7 @@ interface ICatalog {
 
 const Catalog: React.FC<ICatalog> = ({ colors }) => {
 
-    const { filter, setFilter, resetFilter } = useCatalogContext();
+    const { filter, setFilter, resetFilter, setPrice } = useCatalogContext();
     const [products, setProducts] = useState<IResponseProducts>({} as IResponseProducts);
     const [isSortOpen, setIsSortOpen] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
@@ -36,7 +36,14 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
             skipNull: true,
         });
         const productsData = await getProducts(qu);
+        console.log("🚀 ~ loadProducts ~ productsData:", productsData)
         setProducts(productsData);
+        if (productsData.max_product_price && productsData.min_product_price) {
+            setPrice({
+                min: productsData.min_product_price,
+                max: productsData.max_product_price,
+            })
+        }
         setTotalPages(Math.ceil(productsData.count / filter.limit) - 1);
     }
 
@@ -49,12 +56,6 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
 
     return (
         <>
-            {/* {isModal ? (
-                <div className="bg-white">
-                    asdasd
-                    <Filter colors={colors} />
-                </div>
-            ) : ( */}
             <div className="flex flex-col gap-[19px]">
 
                 <p className="font-[400] text-[14px] xl:text-[18px]">
@@ -66,7 +67,7 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
                 </p >
                 <h4 className="title font-[400] text-black">Каталог</h4>
                 <div className="flex justify-between items-end mb-[30px]">
-                    <div className="flex gap-[9px] items-center xl:hidden" onClick={() => setIsModal(true)}>
+                    <div className="cursor-pointer flex gap-[9px] items-center xl:hidden" onClick={() => setIsModal(true)}>
                         <IconMain name={EIcon.Filter} style="size-[17px]" />
                         <p className="font-[700] uppercase text-[14px]">Фильтр</p>
 
@@ -80,9 +81,9 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
                         />
                         <input
                             type="text"
-                            value={filter.brand}
+                            value={filter.name}
                             placeholder="Поиск"
-                            onChange={(e) => setFilter({ ...filter, brand: e.target.value })}
+                            onChange={(e) => setFilter({ ...filter, name: e.target.value })}
                             className="w-full h-full bg-[#D9D9D9] pl-8  placeholder:absolute placeholder:right-10 placeholder:top-1/2 placeholder:-translate-y-1/2  placeholder:text-heavyGray placeholder:font-[400] placeholder:leading-[10px] placeholder:text-center"
                         />
                     </label>
@@ -200,11 +201,12 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
                         src="/icon/arrow-next.svg"
                         size={48}
                         fill="#ADB5BD"
-                        className="cursor-pointer"
+                        className={`cursor-pointer ${totalPages < 2 && "hidden"}`}
+                        onClick={() => setFilter({ ...filter, offset: (filter.limit as number) * totalPages })}
                     />
                 </div>
 
-                <Portal>
+                {isModal && <Portal>
                     <div className="fixed overflow-auto top-0 left-0 right-0  z-50 bg-white w-full h-full xl:hidden">
                         <div className="p-[60px]">
                             <div className="flex justify-between items-center">
@@ -215,16 +217,16 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
                                     src="/icon/arrow-next.svg"
                                     fill="#ADB5BD"
                                     className="cursor-pointer w-[102px] h-[52px]"
+                                    onClick={() => setIsModal(false)}
                                 />
                             </div>
                             <Filter colors={colors} />
                         </div>
                     </div>
-                </Portal>
+                </Portal>}
 
             </div >
-            {/* )
-            } */}
+
 
         </>
     );

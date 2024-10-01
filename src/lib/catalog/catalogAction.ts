@@ -1,6 +1,6 @@
 'use server'
 
-import { IFullProduct, IProduct, IResponseProducts } from "@/types/product"
+import { ICategory, IFullProduct, IProduct, IResponseProducts } from "@/types/product"
 
 export async function getColors(): Promise<string[]> {
     try {
@@ -18,7 +18,7 @@ export async function getProducts(querry: string = ''): Promise<IResponseProduct
         const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products/' + `?${querry}`, {
             cache: 'no-store'
         })
-        
+
 
         return res.json() as Promise<IResponseProducts>
     } catch (error) {
@@ -32,6 +32,16 @@ export async function getOneProduct(id: string): Promise<IFullProduct | {}> {
         const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products/' + id)
 
         return await res.json() as IFullProduct
+    } catch (error) {
+        console.log(error)
+        return {}
+    }
+}
+export async function getCategory(): Promise<ICategory | {}> {
+    try {
+        const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products_by_section/')
+
+        return await res.json() as ICategory
     } catch (error) {
         console.log(error)
         return {}

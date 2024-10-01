@@ -1,8 +1,11 @@
 'use client';
 
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useCatalogContext } from "../Contex/CatalogProvider";
 import { Icon } from "@/shared/ui/icon";
+import { Range } from "react-range";
+import { getCategory } from "@/lib/catalog/catalogAction";
+import { ICategory } from "@/types/product";
 
 interface IFilter {
     colors: string[];
@@ -10,10 +13,31 @@ interface IFilter {
 
 
 const Filter: React.FC<IFilter> = ({ colors }) => {
-    const { filter, setFilter, resetFilter } = useCatalogContext();
+    const { filter, setFilter, resetFilter, price } = useCatalogContext();
+    const [statePrice, setStatePrice] = useState({ min: price.min, max: price.max });
     const [isMaleOpen, setIsMaleOpen] = useState(false);
     const [isFemaleOpen, setIsFemaleOpen] = useState(false);
+    const [category, setCategory] = useState<ICategory>({} as ICategory);
 
+    useEffect(() => {
+        setStatePrice({ min: price.min, max: price.max });
+    }, [price]);
+
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         const res = await getCategory();
+    //         if (Object.values(res).length > 0) {
+    //             setCategory(prevState => ({
+    //                 ...prevState,
+    //                 ...res
+    //             }));
+    //         }
+    //     }
+
+    //     getData();
+    // }, []);
+
+    // console.log(category);
 
     return (
         <div className="flex flex-col gap-[60px]">
@@ -145,8 +169,68 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                 </div>
 
             </div>
-            <div className="w-full">
-                <h4 className="title">Цена</h4>
+            <div className="w-full flex flex-col gap-[42px] items-center">
+                <h4 className="title self-start">Цена</h4>
+                <Range
+                    values={[statePrice.min || price.min, statePrice.max || price.max]}
+                    onChange={([min, max]) => {
+                        // setFilter({ ...filter, offset: null, price_min: min, price_max: max })
+                        setStatePrice({ min, max })
+                    }}
+                    onFinalChange={([min, max]) => {
+                        setFilter({ ...filter, offset: null, price_min: min, price_max: max })
+                    }}
+                    min={price.min}
+                    max={price.max}
+                    renderTrack={({ props, children }) => (
+                        <div
+                            {...props}
+                            style={{
+                                ...props.style,
+                                height: "3px",
+                                width: "90%",
+                                backgroundColor: "#22262A",
+                            }}
+                        >
+                            {children}
+                        </div>
+                    )}
+
+                    renderThumb={({ props }) => {
+
+                        return (
+                            <div
+                                {...props}
+                                key={props.key}
+                                style={{
+                                    ...props.style,
+                                    height: "13px",
+                                    width: "13px",
+                                    borderRadius: "50%",
+                                    backgroundColor: "#000000",
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        position: "absolute",
+                                        left: "50%",
+                                        transform: "translate(-50%, 0)",
+                                        top: '-20px',
+                                        backgroundColor: "transparent",
+                                        padding: "5px",
+                                        color: "#000000",
+                                        fontSize: "11px",
+                                        fontWeight: "bold",
+                                    }}
+                                >
+                                    {props.key === 0 ? statePrice.min : statePrice.max}
+                                </span>
+                            </div>
+                        )
+                    }}
+
+                    step={1000}
+                />
             </div>
         </div>
     );

@@ -20,6 +20,8 @@ import { createContext, useContext, useState } from "react";
 export type IOrdering = 'created_at' | '-created_at' | 'price' | '-price' | 'total_order_count' | '-total_order_count' | '';
 type ISex = 'women' | 'man' | 'unisex' | '';
 
+
+
 interface IFilter {
     brand: string
     category: string[]
@@ -30,14 +32,21 @@ interface IFilter {
     ordering: IOrdering
     price_max: number | null
     price_min: number | null
-    sex: ISex
+    sex: ISex | `${ISex},${ISex}`
 }
 
+interface IPrice {
+    min: number
+    max: number
+
+}
 
 interface CatalogContextType {
 
     filter: IFilter
     setFilter: React.Dispatch<React.SetStateAction<IFilter>>
+    price: IPrice
+    setPrice: React.Dispatch<React.SetStateAction<IPrice>>
     resetFilter: () => void
 }
 
@@ -48,7 +57,7 @@ export const useCatalogContext = () => useContext(CatalogContext);
 const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
     const [filter, setFilter] = useState<IFilter>({ brand: '', category: [], colors: [], limit: 4, name: '', offset: null, ordering: '', price_max: null, price_min: null, sex: '' });
-
+    const [price, setPrice] = useState<IPrice>({ min: 0, max: 1 });
 
     const resetFilter = () => {
         setFilter({ brand: '', category: [], colors: [], limit: 4, name: '', offset: null, ordering: '', price_max: null, price_min: null, sex: '' });
@@ -56,7 +65,7 @@ const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) 
 
 
     return (
-        <CatalogContext.Provider value={{ filter, setFilter, resetFilter }}>
+        <CatalogContext.Provider value={{ filter, setFilter, resetFilter, price, setPrice }}>
             {children}
         </CatalogContext.Provider>
     );
