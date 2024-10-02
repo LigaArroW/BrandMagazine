@@ -1,6 +1,7 @@
 import { Icon } from "@/shared/ui/icon";
 import { IProduct } from "@/types/product";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ICardProduct {
     product: IProduct
@@ -10,13 +11,16 @@ const CardProduct: React.FC<ICardProduct> = ({ product }) => {
     return (
         <div className="w-full h-full flex flex-col gap-[13px]">
             <div className="relative h-5/6">
-                <Image
-                    src={product.main_image}
-                    alt={product.name}
-                    width={300}
-                    height={300}
-                    className=" object-cover h-full w-full"
-                />
+                <Link
+                    href={`/catalog/${product.id}`}>
+                    <Image
+                        src={product.main_image}
+                        alt={product.name}
+                        width={300}
+                        height={300}
+                        className=" object-cover h-full w-full cursor-pointer"
+                    />
+                </Link>
                 <div className="absolute flex items-center justify-center bg-white right-0 bottom-0  border border-primary w-[45px] h-[45px]">
                     <Icon
                         src="/icon/heart.svg"
@@ -31,7 +35,7 @@ const CardProduct: React.FC<ICardProduct> = ({ product }) => {
                 <p>{new Intl.NumberFormat().format(Number(product.price))} p</p>
             </div>
         </div>
-        
+
     );
 };
 

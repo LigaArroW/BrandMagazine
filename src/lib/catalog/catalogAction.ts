@@ -27,14 +27,14 @@ export async function getProducts(querry: string = ''): Promise<IResponseProduct
     }
 }
 
-export async function getOneProduct(id: string): Promise<IFullProduct | {}> {
+export async function getOneProduct(id: string): Promise<IFullProduct | undefined> {
     try {
         const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products/' + id)
 
         return await res.json() as IFullProduct
     } catch (error) {
         console.log(error)
-        return {}
+        return undefined
     }
 }
 export async function getCategory(): Promise<ICategory | {}> {
