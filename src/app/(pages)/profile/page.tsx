@@ -21,7 +21,7 @@ const loadComponent = (componentName: any) =>
 
 export default function Profile() {
     const router = useRouter();
-    const token = getToken(TokenNames.access);
+    // const token = getToken(TokenNames.access);
     const [isAuth, setIsAuth] = useState(false);
     const profileHeaderTab = TabData.map((item, index) => (
         <div key={index} className="flex flex-col gap-[7px] md:gap-[9px] 2xl:gap-[13px]">
@@ -39,16 +39,16 @@ export default function Profile() {
         );
     });
 
-    useEffect(() => {
-        if (token) {
-            setIsAuth(true);
-        }
-    })
+    // useEffect(() => {
+    //     if (token) {
+    //         setIsAuth(true);
+    //     }
+    // })
 
     const handleClickLogout = () => {
-        removeToken(TokenNames.access);
-        removeToken(TokenNames.refresh);
-        router.push("/");
+        // removeToken(TokenNames.access);
+        // removeToken(TokenNames.refresh);
+        // router.push("/");
     }
 
     return (

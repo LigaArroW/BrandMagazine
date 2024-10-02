@@ -1,3 +1,4 @@
+'use client';
 import { TokenNames } from "@/types/auth";
 
 export function setToken(token: string, name: TokenNames) {
