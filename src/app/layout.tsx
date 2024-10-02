@@ -4,6 +4,7 @@ import "./globals.scss";
 import { Providers } from "./providers";
 import { Header } from "@/widgets/Header";
 import { Footer } from "@/widgets/Footer";
+import MainProvider from "@/shared/components/Contex/MainProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,12 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className + (" flex flex-col min-h-screen")}>
         <Providers>
-          <div id="modal-portal" />
-          <Header />
-          {children}
-          <Footer />
+          <MainProvider>
+            <div id="modal-portal" />
+            <Header />
+            {children}
+            <Footer />
+          </MainProvider>
         </Providers>
       </body>
     </html>

@@ -32,7 +32,7 @@ const CardProduct: React.FC<ICardProduct> = ({ product }) => {
             <p className="text-[8px] mt-auto text-gray-950/70 md:text-[14px] lg-text-[13px] xl:text-[17px]">Артикул: {product.article}</p>
             <div className="flex items-center justify-between text-[9px] text-black md:text-[16px] lg-text-[15px] xl:text-[20px]">
                 <p>{product.name} {product.brand}</p>
-                <p>{new Intl.NumberFormat().format(Number(product.price))} p</p>
+                <p className="whitespace-nowrap">{new Intl.NumberFormat().format(Number(product.price))} p</p>
             </div>
         </div>
 

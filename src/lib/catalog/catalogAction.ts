@@ -12,7 +12,7 @@ export async function getColors(): Promise<string[]> {
     }
 }
 
-export async function getProducts(querry: string = ''): Promise<IResponseProducts> {
+export async function getProducts(querry: string = ''): Promise<IResponseProducts | undefined> {
     try {
 
         const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products/' + `?${querry}`, {
@@ -23,7 +23,7 @@ export async function getProducts(querry: string = ''): Promise<IResponseProduct
         return res.json() as Promise<IResponseProducts>
     } catch (error) {
         console.log(error)
-        return {} as IResponseProducts
+        undefined
     }
 }
 

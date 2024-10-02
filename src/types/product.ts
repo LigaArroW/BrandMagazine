@@ -30,6 +30,8 @@ export interface IFullProduct extends Omit<IProduct, 'id' | 'article'> {
     sizes: ISize[]
     main_image: string
     other_images: IImage[]
+    discounted_price: string | null
+    description: string
 }
 
 export interface ISubCategory {

@@ -10,7 +10,8 @@ const config: Config = {
         tertiary: 'var(--tertiary-color)',
         white: 'var(--white)',
         heavyGray: 'var(--heavy-gray)',
-        black: 'var(--black)'
+        black: 'var(--black)',
+        middleGray: 'var(--middle-gray)'
       },
       backgroundImage: {
         spiner: "linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat",

@@ -9,6 +9,7 @@
   --white: #ffffff;
   --heavy-gray: #484f56;
   --black: #000000;
+  --middle-gray: #6d757e;
 }
 
 body {
@@ -94,7 +95,7 @@ textarea {
 @layer base {
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/public/fonts/ALIBABAPUHUITI-2-105-HEAVY.OTF) format("otf");
+    src: url(/public/fonts/ALIBABAPUHUITI-2-105-HEAVY.OTF) format("opentype");
     font-display: swap;
     font-weight: 900;
     font-style: normal;
@@ -102,7 +103,7 @@ textarea {
 
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/public/fonts/ALIBABAPUHUITI-2-65-MEDIUM.TTF) format("otf");
+    src: url(/public/fonts/ALIBABAPUHUITI-2-65-MEDIUM.TTF) format("truetype");
     font-display: swap;
     font-weight: 400;
     font-style: normal;
@@ -110,14 +111,14 @@ textarea {
 
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/public/fonts/ALIBABAPUHUITI-2-105-LIGHT.OTF) format("otf");
+    src: url(/public/fonts/ALIBABAPUHUITI-2-105-LIGHT.OTF) format("opentype");
     font-display: swap;
     font-weight: 300;
     font-style: normal;
   }
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/public/fonts/ALIBABAPUHUITI-2-55-REGULAR.OTF) format("otf");
+    src: url(/public/fonts/ALIBABAPUHUITI-2-55-REGULAR.OTF) format("opentype");
     font-display: swap;
     font-weight: 400;
     font-style: normal;
@@ -125,7 +126,7 @@ textarea {
 
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/public/fonts/ALIBABAPUHUITI-2-85-BOLD.OTF) format("otf");
+    src: url(/public/fonts/ALIBABAPUHUITI-2-85-BOLD.OTF) format("opentype");
     font-display: swap;
     font-weight: 600;
     font-style: normal;

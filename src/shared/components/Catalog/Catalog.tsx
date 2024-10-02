@@ -37,6 +37,7 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
         });
         const productsData = await getProducts(qu);
         console.log("🚀 ~ loadProducts ~ productsData:", productsData)
+        if(!productsData) return
         setProducts(productsData);
         if (productsData.max_product_price && productsData.min_product_price) {
             setPrice({
