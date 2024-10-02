@@ -6,19 +6,19 @@ export const ProfileLink = "/profile";
 export const MenuLink = [
     {
         name: "ОПЛАТА И ДОСТАВКА",
-        link: "/"
+        link: "/delivery"
     },
     {
         name: "НОВИНКИ",
-        link: "/"
+        link: "/new-product"
     },
     {
         name: "КАТАЛОГ",
-        link: "/"
+        link: "/catalog"
     },
     {
         name: "ОТЗЫВЫ",
-        link: "/"
+        link: "/reviews"
     },
     {
         name: "Whatsapp",
@@ -26,6 +26,6 @@ export const MenuLink = [
     },
     {
         name: "О НАС",
-        link: "/"
+        link: "/about"
     }
 ]

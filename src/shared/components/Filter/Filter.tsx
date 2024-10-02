@@ -169,7 +169,7 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                 </div>
 
             </div>
-            <div className="w-full flex flex-col gap-[42px] items-center">
+            <div className="w-full flex flex-col gap-[42px] items-center mb-[50px]">
                 <h4 className="title self-start">Цена</h4>
                 <Range
                     values={[statePrice.min || price.min, statePrice.max || price.max]}
