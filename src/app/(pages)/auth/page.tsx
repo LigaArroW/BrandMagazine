@@ -75,7 +75,7 @@ export default function Auth() {
                                 <p className="text-[13px] lg:text-[8px] 2xl:text-[11px]">Запомнить меня</p>
                             </label>
                             {!stateAuth.success && stateAuth.error && <p className="text-red-500">{stateAuth.error}</p>}
-                            <Button type="submit" isForms >Регистрация</Button>
+                            <Button type="submit" isForms >Вход</Button>
                         </form>
                     </div>
                     <div className="flex gap-[14px] flex-col mb-[49px] md:mb-[60px] lg:w-full lg:mb-[30px] 2xl:gap-[19px]">
