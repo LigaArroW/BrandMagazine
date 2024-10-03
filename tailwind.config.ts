@@ -11,7 +11,8 @@ const config: Config = {
         white: 'var(--white)',
         heavyGray: 'var(--heavy-gray)',
         black: 'var(--black)',
-        middleGray: 'var(--middle-gray)'
+        middleGray: 'var(--middle-gray)',
+        lightGray: 'var(--light-gray)'
       },
       backgroundImage: {
         spiner: "linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat",

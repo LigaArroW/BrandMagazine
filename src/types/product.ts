@@ -5,6 +5,7 @@ export interface IProduct {
     brand: string,
     price: string
     main_image: string
+    discounted_price: string | null
 }
 
 export interface IResponseProducts {
@@ -28,9 +29,7 @@ interface ISize {
 export interface IFullProduct extends Omit<IProduct, 'id' | 'article'> {
     color: string
     sizes: ISize[]
-    main_image: string
     other_images: IImage[]
-    discounted_price: string | null
     description: string
 }
 

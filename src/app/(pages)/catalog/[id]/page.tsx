@@ -1,4 +1,5 @@
 import { getOneProduct, getProducts } from "@/lib/catalog/catalogAction";
+import AddCartFavorite from "@/shared/components/AddCartFavorite/AddCartFavorite";
 import ButtonWithSvg from "@/shared/components/ButtonWithSvg/ButtonWithSvg";
 
 import CatalogImages from "@/shared/components/Catalog/CatalogImages/CatalogImages";
@@ -16,9 +17,9 @@ export default async function Page({ params }: { params: { id: string } }) {
     return (
         <main className="container mt-[38px] md:mt-[62px] lg:mt-[75px] xl:mt-[100px]" >
             <section className="row ">
-                <div className="flex flex-col pb-[25px] border-b border-dotted border-[#C9C9C9] gap-[32px] items-center xl:items-start xl:flex-row xl:gap-[50px] xl:pb-[40px] ">
+                <div className="flex flex-col pb-[25px] border-b-4 border-dotted border-[#C9C9C9] gap-[32px] items-center xl:items-start xl:flex-row xl:gap-[50px] xl:pb-[40px] ">
                     <CatalogImages product={product} />
-                    <div className="w-full xl:w-1/2 md:max-w-[650px] xl:max-w-full">
+                    <div className="w-full xl:w-1/2 border-b-4 border-dotted border-[#C9C9C9] md:max-w-[650px] xl:max-w-full pb-[25px] md:pb-[37px] lg:pb-[37px] xl:pb-[31px] 2xl:pb-[42px]">
                         <div className="justify-between mb-[11px] hidden xl:flex">
                             <p className="font-[700] text-heavyGray text-[12px]">Бренды</p>
                             <ButtonWithSvg
@@ -53,7 +54,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                             text-[12px]">Цвет: <span
                                     className="text-heavyGray text-[15px]"
                                 >{product.color}</span></p>
-                            <p className="text-middleGray uppercase font-[700] 
+                            <p className="text-middleGray select-none uppercase font-[700] 
                             text-[12px]
                             ">Размер</p>
                             <div className="flex gap-[8px]">
@@ -66,7 +67,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                             </div>
                         </div>
 
-
+                        <AddCartFavorite />
 
                     </div>
 

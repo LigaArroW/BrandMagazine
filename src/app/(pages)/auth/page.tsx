@@ -2,7 +2,7 @@
 
 import { sign } from "@/lib/auth/authAction";
 import { AuthAction, RegistationAction } from "@/lib/forms/auth";
-import { setToken } from "@/lib/token/tokenAction";
+import { useMainContext } from "@/shared/components/Contex/MainProvider";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { Form } from "@/shared/ui/form";
@@ -18,6 +18,7 @@ import { useFormState } from "react-dom";
 
 export default function Auth() {
     const router = useRouter();
+    const { login } = useMainContext();
     const [checked, setChecked] = useState(false);
     const [stateReg, actionReg] = useFormState(RegistationAction, {
         success: false,
@@ -32,9 +33,11 @@ export default function Auth() {
 
     useEffect(() => {
         if (stateAuth.success && stateAuth.token) {
-            setToken(stateAuth.token.access, TokenNames.access)
-            setToken(stateAuth.token.refresh, TokenNames.refresh)
+            // setToken(stateAuth.token.access, TokenNames.access)
+            // setToken(stateAuth.token.refresh, TokenNames.refresh)
+            console.log(stateAuth.token.access);
 
+            login(stateAuth.token.access, stateAuth.token.refresh)
             router.push('/')
         }
 

@@ -8,7 +8,6 @@ import { FavoritesProfile } from "@/widgets/FavoritesProfile";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Loader } from "@/shared/ui/loader";
 import { Button } from "@/shared/ui/button";
-import { getToken, removeToken } from "@/lib/token/tokenAction";
 import { TokenNames } from "@/types/auth";
 import { useRouter } from "next/navigation";
 
