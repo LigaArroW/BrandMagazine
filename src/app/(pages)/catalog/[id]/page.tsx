@@ -1,6 +1,7 @@
-import { getOneProduct, getProducts } from "@/lib/catalog/catalogAction";
+import { getOneProduct, getProducts, getRecommendedProducts } from "@/lib/catalog/catalogAction";
 import AddCartFavorite from "@/shared/components/AddCartFavorite/AddCartFavorite";
 import ButtonWithSvg from "@/shared/components/ButtonWithSvg/ButtonWithSvg";
+import CardProduct from "@/shared/components/CardProduct/CardProduct";
 
 import CatalogImages from "@/shared/components/Catalog/CatalogImages/CatalogImages";
 
@@ -13,13 +14,15 @@ export async function generateStaticParams() {
 export default async function Page({ params }: { params: { id: string } }) {
     const product = await getOneProduct(params.id)
     if (!product) return null
+    const recomendedProducts = await getRecommendedProducts(Number(params.id))
+
 
     return (
         <main className="container mt-[38px] md:mt-[62px] lg:mt-[75px] xl:mt-[100px]" >
             <section className="row ">
-                <div className="flex flex-col pb-[25px] border-b-4 border-dotted border-[#C9C9C9] gap-[32px] items-center xl:items-start xl:flex-row xl:gap-[50px] xl:pb-[40px] ">
+                <div className="flex flex-col mb-[21px] pb-[25px] border-b-4 border-dotted border-[#C9C9C9] gap-[32px] items-center md:mb-[42px] 2xl:mb-[56px] xl:items-start xl:flex-row xl:gap-[50px] xl:pb-[40px] ">
                     <CatalogImages product={product} />
-                    <div className="w-full xl:w-1/2 border-b-4 border-dotted border-[#C9C9C9] md:max-w-[650px] xl:max-w-full pb-[25px] md:pb-[37px] lg:pb-[37px] xl:pb-[31px] 2xl:pb-[42px]">
+                    <div className="w-full xl:w-1/2  md:max-w-[650px] xl:max-w-full ">
                         <div className="justify-between mb-[11px] hidden xl:flex">
                             <p className="font-[700] text-heavyGray text-[12px]">Бренды</p>
                             <ButtonWithSvg
@@ -68,9 +71,40 @@ export default async function Page({ params }: { params: { id: string } }) {
                         </div>
 
                         <AddCartFavorite />
-
+                        <div className="flex flex-col gap-[24px] xl:gap-4 2xl:gap-7">
+                            <p className="uppercase font-[700] text-middleGray text-[12px] xl:text-[9px] 2xl:text-[12px]">Описание:</p>
+                            <p className="text-[13px] text-heavyGray 2xl:text-[16px]">{product.description}</p>
+                        </div>
                     </div>
 
+                </div>
+                <div className="flex flex-col xl:flex-row gap-8 md:gap-[25px] xl:gap-5 mb-[30px]  border-b-4 border-dotted border-[#C9C9C9] pb-[25px] lg:pb-[41px] xl:mb-[56px] md:mb-[41px] 2xl:pb-[56px] 2xl:mb-[75px]">
+                    <div className="select-none w-full xl:w-1/2 text-heavyGray flex flex-col gap-6 2xl:gap-[35px]">
+                        <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px]">Оплата</h4>
+                        <ul className="text-[15px] 2xl:text-[20px]">
+                            <li className="">- Наличными или переводом после получения заказа</li>
+                        </ul>
+                    </div>
+                    <div className="w-full xl:w-1/2 text-heavyGray flex flex-col gap-6 2xl:gap-[35px]">
+                        <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px]">Доставка</h4>
+                        <ul className="text-[15px] 2xl:text-[20px]">
+                            <li className="">- Доставка в приделах МКАД бесплатно</li>
+                            <li className="">- За МКАД и МО до 2000р</li>
+                            <li className="">- По России 100% предоплата, доставка осуществляется через СДЭК</li>
+                        </ul>
+                    </div>
+                </div>
+                <div className="">
+                    <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px] text-heavyGray">Вас также может заинтересовать</h4>
+                    <div className="grid gap-[45px] grid-cols-2 xl:grid-cols-4 ">
+                        {recomendedProducts && recomendedProducts.recommended_products.map((product, index) => {
+                            return (
+                                <div className={`${index > 1 ? "hidden xl:block" : ""}`} key={product.id}>
+                                    <CardProduct product={product} />
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </section>
         </main >

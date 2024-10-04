@@ -17,7 +17,7 @@ const AddCartFavorite = () => {
     const handleClickBuy = () => { }
 
     return (
-        <div className="flex gap-[4px] items-center  md:gap-[14px] xl:gap-[11px] flex-wrap">
+        <div className="flex gap-[4px] items-center mb-[22px] xl:mb-[28px]  md:gap-[14px] xl:gap-[11px] flex-wrap pb-[25px] md:pb-[37px] lg:pb-[37px] xl:pb-[31px] 2xl:pb-[42px] border-b-4 border-dotted border-[#C9C9C9]">
             <div className="flex gap-[6px] xl:gap-[5px] 2xl:gap-0">
                 <div className="flex gap-[10px] items-center border-[5px] border-secondary rounded-l-md bg-white">
                     <div className="px-[3px] py-[7px]">

@@ -1,3 +1,4 @@
+'use client'
 import { Icon } from "@/shared/ui/icon";
 import { IProduct } from "@/types/product";
 import Image from "next/image";
@@ -14,7 +15,7 @@ const CardProduct: React.FC<ICardProduct> = ({ product }) => {
                 <Link
                     href={`/catalog/${product.id}`}>
                     <Image
-                        src={product.main_image}
+                        src={product.main_image.startsWith('http') ? product.main_image : process.env.NEXT_PUBLIC_BACKEND_URL + `${product.main_image}`}
                         alt={product.name}
                         width={300}
                         height={300}

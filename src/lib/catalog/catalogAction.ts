@@ -48,5 +48,27 @@ export async function getCategory(): Promise<ICategory | {}> {
     }
 }
 
+interface IRecomendedProducts {
+    recommended_products: IProduct[]
+}
 
+export async function getRecommendedProducts(id: number | number[]): Promise<IRecomendedProducts | undefined> {
+    if (!Array.isArray(id)) id = [id]
+
+    try {
+        const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products/recommended/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                reference_products: id
+            })
+        })
+        return await res.json()
+    } catch (error) {
+        console.log(error)
+        return undefined
+    }
+}
 
