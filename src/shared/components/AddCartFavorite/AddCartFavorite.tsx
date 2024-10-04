@@ -1,20 +1,57 @@
 'use client';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMainContext } from "../Contex/MainProvider";
 import { Icon } from "@/shared/ui/icon";
+import { useRouter } from "next/navigation";
+import { addToFavorite } from "@/lib/user/userAction";
 
+interface IAddCartFavorite {
+    id: string
+}
 
-const AddCartFavorite = () => {
-    const { } = useMainContext()
+const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id }) => {
+    const { accessToken } = useMainContext()
+    console.log("🚀 ~ accessToken:", accessToken)
+
     const [quantity, setQuantity] = useState(1)
+    const [message, setMessage] = useState<string>('')
+    const [isFavorite, setIsFavorite] = useState(false)
+    const router = useRouter()
+
+
 
     const handleClickCart = () => {
-
+        if (!accessToken) {
+            return router.push('/auth')
+        }
     }
 
-    const handleClickFavorite = () => { }
+    const handleClickFavorite = async () => {
+        if (!accessToken) {
+            return router.push('/auth')
+        }
+        const add = await addToFavorite(id, accessToken)
+        console.log("🚀 ~ handleClickFavorite ~ add:", add)
 
-    const handleClickBuy = () => { }
+        // if (!add) {
+        //     setMessage('Товар уже добавлен в избранное')
+        //     setTimeout(() => {
+        //         setMessage('')
+        //     }, 3000)
+        //     return
+        // }
+
+        // setMessage('Товар добавлен в избранное')
+        // setTimeout(() => {
+        //     setMessage('')
+        // }, 3000)
+    }
+
+    const handleClickBuy = () => {
+        if (!accessToken) {
+            return router.push('/auth')
+        }
+    }
 
     return (
         <div className="flex gap-[4px] items-center mb-[22px] xl:mb-[28px]  md:gap-[14px] xl:gap-[11px] flex-wrap pb-[25px] md:pb-[37px] lg:pb-[37px] xl:pb-[31px] 2xl:pb-[42px] border-b-4 border-dotted border-[#C9C9C9]">
@@ -68,7 +105,7 @@ const AddCartFavorite = () => {
                 <p className="text-nowrap font-[700] text-[#353B41] text-[12px] xl:text-[10px] 2xl:text-[13px]">Купить в один клик</p>
             </button>
             <button type="button"
-                className="flex select-none bg-primary items-center py-[12px] px-[18px] gap-[16px] xl:py-[10px] xl:px-[14px] 2xl:py-[13px] 2xl:px-[19px]"
+                className="flex relative select-none bg-primary items-center py-[12px] px-[18px] gap-[16px] xl:py-[10px] xl:px-[14px] 2xl:py-[13px] 2xl:px-[19px]"
                 onClick={handleClickFavorite}
             >
                 <Icon
@@ -76,7 +113,7 @@ const AddCartFavorite = () => {
                     stroke="white"
                     className="size-[14px] xl:size-[11px] 2xl:size-[14px]"
                 />
-                <p className="text-nowrap font-[700] text-white text-[12px] xl:text-[10px] 2xl:text-[13px]">В избранное</p>
+                <p className="text-nowrap font-[700] text-white text-[12px] xl:text-[10px] 2xl:text-[13px]">{isFavorite ? 'В избранном' : 'Добавить в избранное'}</p>
             </button>
 
             <button type="button"

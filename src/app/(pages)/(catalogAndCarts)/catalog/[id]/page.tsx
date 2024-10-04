@@ -70,7 +70,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                             </div>
                         </div>
 
-                        <AddCartFavorite />
+                        <AddCartFavorite id={params.id} />
                         <div className="flex flex-col gap-[24px] xl:gap-4 2xl:gap-7">
                             <p className="uppercase font-[700] text-middleGray text-[12px] xl:text-[9px] 2xl:text-[12px]">Описание:</p>
                             <p className="text-[13px] text-heavyGray 2xl:text-[16px]">{product.description}</p>
@@ -94,8 +94,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                         </ul>
                     </div>
                 </div>
-                <div className="">
-                    <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px] text-heavyGray">Вас также может заинтересовать</h4>
+                <div className="mb-[25px] md:mb-[68px] xl:mb-[47px] 2xl:mb-[64px]">
+                    <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px] inline-block text-heavyGray mb-[30px] md:mb-[42px] xl:mb-[49px] 2xl:mb-[67px]">Вас также может заинтересовать</h4>
                     <div className="grid gap-[45px] grid-cols-2 xl:grid-cols-4 ">
                         {recomendedProducts && recomendedProducts.recommended_products.map((product, index) => {
                             return (

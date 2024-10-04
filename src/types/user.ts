@@ -8,3 +8,8 @@ export interface UserDTO {
     city: string
     address: string
 }
+
+export interface IAddToFavorite {
+    client: number
+    product: number
+}
