@@ -9,10 +9,10 @@ export default function ProfilePage() {
     const router = useRouter()
 
     if (!accessToken) {
-        router.push('/auth')
+        router.replace('/auth')
     }
 
-    return router.push('/profile/my-orders')
+    return router.replace('/profile/my-orders')
 
 
 }

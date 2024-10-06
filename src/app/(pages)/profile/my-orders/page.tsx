@@ -26,11 +26,26 @@ export default function MyOrdersPage() {
         getData()
     }, [])
 
+
+    const summ = (order: IGetOrders) => {
+        let summ = 0
+        order.items.forEach(item => {
+            summ += Number(item.product.price) * Number(item.quantity)
+        })
+        summ -= Number(order.discount)
+        return new Intl.NumberFormat().format(Number(summ))
+        // cart.forEach(item => {
+        //     summ += Number(item.product.price) * Number(item.quantity)
+        // })
+        // return new Intl.NumberFormat().format(Number(summ))
+    }
+
+
     return (
-        <>
+        <div className="mb-12">
             {
                 orders.length > 0 && orders.map((order, index) => (
-                    <div className={`bor-dot pb-5 md:pb-10 xl:pb-8 2xl:pb-10 pt-5 md:pt-10 xl:pt-8 2xl:pt-10`}>
+                    <div className={` pb-5 md:pb-10 xl:pb-8 2xl:pb-10 pt-5 md:pt-10 xl:pt-8 2xl:pt-10 ${index === indexAccordion ? '' : 'bor-dot'}`}>
                         <div className="flex items-center justify-between gap-8 cursor-pointer" onClick={() => setIndexAccordion(index)}>
                             <div className="grid grid-cols-2 grid-rows-2 w-3/4 xl:w-1/2 gap-8 xl:grid-rows-1 xl:grid-cols-4">
                                 <div className="flex flex-col items-start gap-3 2xl:gap-4">
@@ -61,7 +76,7 @@ export default function MyOrdersPage() {
                                 <p className="w-2/3 lg:w-1/2 pl-14 md:pl-0 md:text-center xl:text-left xl:pl-6">товар</p>
                                 <p className="w-1/3 lg:w-1/2 text-center">итого</p>
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex flex-col ">
                                 <div className="bor-dot w-full flex ">
                                     <div className="w-2/3 lg:w-1/2 border-r-4 border-dotted border-[#C9C9C9] pr-4 pb-5 2xl:pb-9 lg:pr-16 2xl:pr-[104px]">
                                         <ul className="mt-3 grid grid-cols-1 xl:grid-cols-2 gap-5 2xl:mt-7">
@@ -94,10 +109,35 @@ export default function MyOrdersPage() {
                                             ))}
                                         </ul>
                                     </div>
-                                    <p className="w-1/3 lg:w-1/2 flex items-center justify-center">{new Intl.NumberFormat().format(Number(order.total_sum))} р</p>
+                                    <p className="w-1/3 lg:w-1/2 flex font-[900] items-center justify-center text-heavyGray text-[12px] 2xl:text-[16px]">{new Intl.NumberFormat().format(Number(order.total_sum))} р</p>
                                 </div>
 
-                                
+
+                                <div className="bor-dot w-full flex ">
+                                    <div className="w-2/3 lg:w-1/2 flex items-center border-r-4 border-dotted border-[#C9C9C9] pr-4 pb-5 pt-5 2xl:pb-9 2xl:pt-9 lg:pr-16 2xl:pr-[104px]">
+                                        <h5 className="text-black uppercase font-[700] text-[12px] 2xl:text-[16px] pl-7">Доставка</h5>
+                                    </div>
+                                    <p className="uppercase w-1/3 font-[900] lg:w-1/2 flex items-center justify-center text-heavyGray text-[12px] 2xl:text-[16px]">{new Intl.NumberFormat().format(Number(order.delivery_cost))} р</p>
+                                </div>
+                                <div className="bor-dot w-full flex ">
+                                    <div className="w-2/3 lg:w-1/2 flex items-center border-r-4 border-dotted border-[#C9C9C9] pr-4 pb-5 pt-5 2xl:pb-9 2xl:pt-9 lg:pr-16 2xl:pr-[104px]">
+                                        <h5 className="text-black uppercase font-[700] text-[12px] 2xl:text-[16px] pl-7">Промокод</h5>
+                                    </div>
+                                    <p className="uppercase w-1/3 font-[900] lg:w-1/2 flex items-center justify-center text-heavyGray text-[12px] 2xl:text-[16px]">{new Intl.NumberFormat().format(Number(order.discount))} р</p>
+                                </div>
+                                <div className="bor-dot w-full flex ">
+                                    <div className="w-2/3 lg:w-1/2 flex items-center border-r-4 border-dotted border-[#C9C9C9] pr-4 pb-5 pt-5 2xl:pb-9 2xl:pt-9 lg:pr-16 2xl:pr-[104px]">
+                                        <h5 className="text-black uppercase font-[700] text-[12px] 2xl:text-[16px] pl-7">сПОСОБ ОПЛАТЫ</h5>
+                                    </div>
+                                    <p className="uppercase w-1/3 font-[900] lg:w-1/2 flex items-center justify-center text-heavyGray text-[12px] 2xl:text-[16px]">ОПЛАТА ПРИ ПОЛУЧЕНИИ</p>
+                                </div>
+                                <div className="bor-dot w-full flex ">
+                                    <div className="w-2/3 lg:w-1/2 flex items-center border-r-4 border-dotted border-[#C9C9C9] pr-4 pb-5 pt-5 2xl:pb-9 2xl:pt-9 lg:pr-16 2xl:pr-[104px]">
+                                        <h5 className="text-black uppercase font-[700] text-[12px] 2xl:text-[16px] pl-7">итого</h5>
+                                    </div>
+                                    <p className="uppercase w-1/3 font-[900] lg:w-1/2 flex items-center justify-center text-heavyGray text-[12px] 2xl:text-[16px]">{summ(order)} р</p>
+                                </div>
+
 
                             </div>
 
@@ -105,6 +145,6 @@ export default function MyOrdersPage() {
                     </div>
                 ))
             }
-        </>
+        </div>
     )
 }
