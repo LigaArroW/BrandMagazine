@@ -64,10 +64,11 @@ export default async function Page({ params }: { params: { id: string } }) {
                                     product.sizes && product.sizes.map(size => (
                                         <div key={size.quantity}
                                             className={`uppercase p-[8px] border w-fit text-black text-[15px] xl:text-[12px] 2xl:text-[16px] bg-white ${size.quantity ? "cursor-pointer bg-heavyGray" : "cursor-default"}`}>
-                                            {size.size}
+                                            {size.size.name}
                                         </div>
                                     ))
                                 }
+
                             </div>
                         </div>
 

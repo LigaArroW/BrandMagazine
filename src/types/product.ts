@@ -22,7 +22,10 @@ interface IImage {
 }
 
 interface ISize {
-    size: string
+    size: {
+        id: number
+        name: string
+    }
     quantity: number
 }
 
