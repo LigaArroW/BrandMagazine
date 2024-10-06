@@ -36,8 +36,7 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
             skipNull: true,
         });
         const productsData = await getProducts(qu);
-        console.log("🚀 ~ loadProducts ~ productsData:", productsData)
-        if(!productsData) return
+        if (!productsData) return
         setProducts(productsData);
         if (productsData.max_product_price && productsData.min_product_price) {
             setPrice({
@@ -178,7 +177,7 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
 
                 <div className="grid grid-cols-2  gap-x-[61px] gap-y-[42px] lg:grid-cols-3 mb-[50px]">
 
-                    {products?.results?.map((product) => (
+                    {products && products.results && products.results.map((product) => (
                         <CardProduct
                             key={product.id}
                             product={product}
