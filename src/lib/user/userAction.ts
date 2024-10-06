@@ -1,5 +1,5 @@
 'use server'
-import { IAddToFavorite, UserDTO } from "@/types/user"
+import { UserDTO } from "@/types/user"
 
 export async function getUserDetail(token: string): Promise<UserDTO | undefined> {
     try {
@@ -19,23 +19,37 @@ export async function getUserDetail(token: string): Promise<UserDTO | undefined>
     }
 }
 
-export async function addToFavorite(id: string, token: string): Promise<IAddToFavorite | undefined> {
+interface IVerifyCode {
+    code: string
+    discount: string
+}
+
+export async function verifyPromoCode(token: string, code: string): Promise<IVerifyCode | undefined> {
     try {
-        const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/favorites/add/', {
-            method: 'POST',
+        const resp = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `/api/promocode/${code}/check/`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                product: id
-            })
+            }
         })
-        return resp.json()
+
+        return await resp.json()
     } catch (error) {
+
         console.log(error)
         return undefined
-
     }
+
 }
+
+
+// export async function confirmPhone(token: string): Promise<boolean> {
+//     try {
+
+//     } catch (error) {
+
+//     }
+// }
+
 

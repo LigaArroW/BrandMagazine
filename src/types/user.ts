@@ -1,15 +1,16 @@
 export interface UserDTO {
     id: number
-    firstName: string
-    lastName: string
+    first_name: string
+    last_name: string
     patronymic: string
-    phone: string
+    phone_number: string
     email: string
     city: string
     address: string
 }
 
-export interface IAddToFavorite {
-    client: number
-    product: number
+export interface TempUser extends UserDTO {
+    note?: string
+    time?: string
+    promoCode?: string
 }

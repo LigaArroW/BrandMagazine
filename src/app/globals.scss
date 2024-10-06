@@ -10,7 +10,7 @@
   --heavy-gray: #484f56;
   --black: #000000;
   --middle-gray: #6d757e;
-  --light-gray: #EAEDF0;
+  --light-gray: #eaedf0;
 }
 
 body {
@@ -211,5 +211,25 @@ textarea {
   }
   .active-page {
     @apply text-primary;
+  }
+  .bor-dot {
+    @apply border-dotted
+    border-b-4
+    border-[#C9C9C9];
+  }
+  .delivery-input {
+    @apply h-16
+    pl-8
+    bg-transparent
+    border
+    border-[#D9D9D9]
+    text-[#5E5E5E]
+    text-[17px]
+    xl:h-9
+    xl:pl-5
+    xl:text-[11px]
+    2xl:h-14
+    2xl:pl-6
+    2xl:text-[14px];
   }
 }

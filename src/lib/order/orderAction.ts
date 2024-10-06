@@ -1,5 +1,5 @@
 'use server'
-import { IGetOrders } from "@/types/order";
+import { IGetOrders, IOrder } from "@/types/order";
 
 export async function getMyOrders(token: string): Promise<IGetOrders[]> {
     try {
@@ -22,11 +22,24 @@ export async function getMyOrders(token: string): Promise<IGetOrders[]> {
     }
 }
 
-export async function createOrder() {
+export async function createOrder(order: IOrder, token: string) {
     try {
-        
+
+        const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/orders/', {
+            method: 'POST',
+            cache: 'no-store',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(order)
+        })
+
+        return await res.json()
     } catch (error) {
-        
+        console.log(error)
+
+        return {}
     }
 }
 

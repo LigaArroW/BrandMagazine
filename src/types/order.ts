@@ -10,19 +10,26 @@ interface IOrderItem {
 export interface IOrder extends UserDTO {
     delivery_time: string
     total_sum: string
+    delivery_item: number
     delivery_cost: string
     discount: string
-    status: string
+    // status: string
     items: IOrderItem[]
 
 }
 
+interface IProductOrder extends IProduct {
+    color: string
+}
+
+
 interface IShareOrderItem {
-    product: IProduct[]
+    product: IProductOrder
     size: {
         id: number
         name: string
     }
+    quantity: number
 }
 
 export interface IGetOrders {

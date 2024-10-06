@@ -3,27 +3,42 @@ import { useEffect, useState } from "react";
 import { useMainContext } from "../Contex/MainProvider";
 import { Icon } from "@/shared/ui/icon";
 import { useRouter } from "next/navigation";
-import { addToFavorite } from "@/lib/user/userAction";
+import { addToFavorite, removeFromFavorite } from "@/lib/favorite/favoriteAction";
+import { IFullProduct } from "@/types/product";
 
 interface IAddCartFavorite {
     id: string
+    product: IFullProduct
 }
 
-const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id }) => {
-    const { accessToken } = useMainContext()
-    console.log("🚀 ~ accessToken:", accessToken)
+const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id, product }) => {
+    const { accessToken, favorites, updFavorites, cart, setCartLS } = useMainContext()
 
-    const [quantity, setQuantity] = useState(1)
-    const [message, setMessage] = useState<string>('')
-    const [isFavorite, setIsFavorite] = useState(false)
+    const [quantity, setQuantity] = useState(cart.find((item) => item.product.id === Number(id))?.quantity || 1)
+
     const router = useRouter()
 
-
-
     const handleClickCart = () => {
-        if (!accessToken) {
-            return router.push('/auth')
+
+        const findProductToCart = cart.find((item) => item.product.id === Number(id)) || null
+        if (findProductToCart) {
+            return
         }
+
+        setCartLS({
+            product: { id: Number(id), ...product },
+            quantity: quantity,
+            color: product.color,
+            
+        })
+
+        // setCart(prev => [...prev, {
+        //     product: { id: Number(id), ...product },
+        //     quantity: quantity,
+        //     color: product.color,
+        // }])
+
+
     }
 
     const handleClickFavorite = async () => {
@@ -31,20 +46,16 @@ const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id }) => {
             return router.push('/auth')
         }
         const add = await addToFavorite(id, accessToken)
-        console.log("🚀 ~ handleClickFavorite ~ add:", add)
 
-        // if (!add) {
-        //     setMessage('Товар уже добавлен в избранное')
-        //     setTimeout(() => {
-        //         setMessage('')
-        //     }, 3000)
-        //     return
-        // }
+        if (add && !('detail' in add)) {
+            await updFavorites()
+            return
+        }
 
-        // setMessage('Товар добавлен в избранное')
-        // setTimeout(() => {
-        //     setMessage('')
-        // }, 3000)
+        const del = await removeFromFavorite(id, accessToken)
+        if (del) {
+            await updFavorites()
+        }
     }
 
     const handleClickBuy = () => {
@@ -113,7 +124,7 @@ const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id }) => {
                     stroke="white"
                     className="size-[14px] xl:size-[11px] 2xl:size-[14px]"
                 />
-                <p className="text-nowrap font-[700] text-white text-[12px] xl:text-[10px] 2xl:text-[13px]">{isFavorite ? 'В избранном' : 'Добавить в избранное'}</p>
+                <p className="text-nowrap font-[700] text-white text-[12px] xl:text-[10px] 2xl:text-[13px]">{favorites.filter(item => item.id === Number(id)).length > 0 ? 'В избранном' : 'Добавить в избранное'}</p>
             </button>
 
             <button type="button"

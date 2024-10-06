@@ -48,7 +48,7 @@ export async function getCategory(): Promise<ICategory | {}> {
     }
 }
 
-interface IRecomendedProducts {
+export interface IRecomendedProducts {
     recommended_products: IProduct[]
 }
 

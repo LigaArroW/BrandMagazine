@@ -1,9 +1,11 @@
-import { getOneProduct, getProducts, getRecommendedProducts } from "@/lib/catalog/catalogAction";
+import { getOneProduct, getProducts } from "@/lib/catalog/catalogAction";
 import AddCartFavorite from "@/shared/components/AddCartFavorite/AddCartFavorite";
 import ButtonWithSvg from "@/shared/components/ButtonWithSvg/ButtonWithSvg";
-import CardProduct from "@/shared/components/CardProduct/CardProduct";
 
 import CatalogImages from "@/shared/components/Catalog/CatalogImages/CatalogImages";
+import PaymentAndDelivery from "@/shared/components/PaymentAndDelivery/PaymentAndDelivery";
+import RecomendedProducts from "@/shared/components/RecomendedProducts/RecomendedProducts";
+
 
 export async function generateStaticParams() {
     const products = await getProducts()
@@ -13,8 +15,12 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { id: string } }) {
     const product = await getOneProduct(params.id)
+    // const [checkColor, setCheckColor] = useState('')
+    // const [checkSize, setCheckSize] = useState('')
     if (!product) return null
-    const recomendedProducts = await getRecommendedProducts(Number(params.id))
+    console.log("🚀 ~ Page ~ product:", product.sizes)
+
+
 
 
     return (
@@ -33,16 +39,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                             />
 
                         </div>
-                        <div className="flex flex-row justify-between xl:flex-col xl:gap-[15px]">
+                        <div className="flex flex-row justify-between mb-[17px] xl:flex-col xl:gap-[15px]">
                             <p className="text-[30px] text-heavyGray xl:text-[48px]">{product.name} {product.brand}</p>
                             <div className="whitespace-nowrap relative font-[700]">
-                                {/* {disco ?
-                                    (
-                                        <p className="text-[30px] text-heavyGray xl:text-[48px]">{new Intl.NumberFormat().format(Number(product.price))} p</p>
-                                    ) : (
-                                        <p className={`${disco && 'line-through'}`}>{new Intl.NumberFormat().format(Number(product.price))} p</p>
-                                    )} */}
-
                                 <p className={`line-through text-[12px] text-[#A8A8A8] ${product.discounted_price ? ' block' : 'hidden'}`}>{product.price} &#8381;</p>
                                 <p className={`text-heavyGray text-[18px]`}>{product.discounted_price ? product.discounted_price : product.price} &#8381;</p>
 
@@ -64,13 +63,15 @@ export default async function Page({ params }: { params: { id: string } }) {
                                 {
                                     product.sizes && product.sizes.map(size => (
                                         <div key={size.quantity}
-                                            className={`uppercase p-[8px] border w-fit text-black text-[15px] xl:text-[12px] 2xl:text-[16px] bg-white ${size.quantity ? "cursor-none bg-heavyGray" : "cursor-pointer"}`}>{size.size}</div>
+                                            className={`uppercase p-[8px] border w-fit text-black text-[15px] xl:text-[12px] 2xl:text-[16px] bg-white ${size.quantity ? "cursor-pointer bg-heavyGray" : "cursor-default"}`}>
+                                            {size.size}
+                                        </div>
                                     ))
                                 }
                             </div>
                         </div>
 
-                        <AddCartFavorite id={params.id} />
+                        <AddCartFavorite id={params.id} product={product} />
                         <div className="flex flex-col gap-[24px] xl:gap-4 2xl:gap-7">
                             <p className="uppercase font-[700] text-middleGray text-[12px] xl:text-[9px] 2xl:text-[12px]">Описание:</p>
                             <p className="text-[13px] text-heavyGray 2xl:text-[16px]">{product.description}</p>
@@ -78,7 +79,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                     </div>
 
                 </div>
-                <div className="flex flex-col xl:flex-row gap-8 md:gap-[25px] xl:gap-5 mb-[30px]  border-b-4 border-dotted border-[#C9C9C9] pb-[25px] lg:pb-[41px] xl:mb-[56px] md:mb-[41px] 2xl:pb-[56px] 2xl:mb-[75px]">
+                {/* <div className="flex flex-col xl:flex-row gap-8 md:gap-[25px] xl:gap-5 mb-[30px]  border-b-4 border-dotted border-[#C9C9C9] pb-[25px] lg:pb-[41px] xl:mb-[56px] md:mb-[41px] 2xl:pb-[56px] 2xl:mb-[75px]">
                     <div className="select-none w-full xl:w-1/2 text-heavyGray flex flex-col gap-6 2xl:gap-[35px]">
                         <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px]">Оплата</h4>
                         <ul className="text-[15px] 2xl:text-[20px]">
@@ -93,8 +94,8 @@ export default async function Page({ params }: { params: { id: string } }) {
                             <li className="">- По России 100% предоплата, доставка осуществляется через СДЭК</li>
                         </ul>
                     </div>
-                </div>
-                <div className="mb-[25px] md:mb-[68px] xl:mb-[47px] 2xl:mb-[64px]">
+                </div> */}
+                {/* <div className="mb-[25px] md:mb-[68px] xl:mb-[47px] 2xl:mb-[64px]">
                     <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px] inline-block text-heavyGray mb-[30px] md:mb-[42px] xl:mb-[49px] 2xl:mb-[67px]">Вас также может заинтересовать</h4>
                     <div className="grid gap-[45px] grid-cols-2 xl:grid-cols-4 ">
                         {recomendedProducts && recomendedProducts.recommended_products.map((product, index) => {
@@ -105,7 +106,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                             )
                         })}
                     </div>
-                </div>
+                </div> */}
+                <PaymentAndDelivery />
+                <RecomendedProducts id={[Number(params.id)]} />
             </section>
         </main >
     )

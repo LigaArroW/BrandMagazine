@@ -18,7 +18,7 @@ import { useFormState } from "react-dom";
 
 export default function Auth() {
     const router = useRouter();
-    const { login } = useMainContext();
+    const { login, accessToken } = useMainContext();
     const [checked, setChecked] = useState(false);
     const [stateReg, actionReg] = useFormState(RegistationAction, {
         success: false,
@@ -30,6 +30,10 @@ export default function Auth() {
         error: '',
         message: '',
     })
+
+    if(accessToken) {
+        router.push('/profile')
+    }
 
     useEffect(() => {
         if (stateAuth.success && stateAuth.token) {
