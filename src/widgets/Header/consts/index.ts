@@ -5,27 +5,27 @@ export const ProfileLink = "/profile";
 
 export const MenuLink = [
     {
-        name: "ОПЛАТА И ДОСТАВКА",
+        name: "Оплата и доставка",
         link: "/delivery"
     },
     {
-        name: "НОВИНКИ",
+        name: "Новинки",
         link: "/new-product"
     },
     {
-        name: "КАТАЛОГ",
+        name: "Каталог",
         link: "/catalog"
     },
     {
-        name: "ОТЗЫВЫ",
+        name: "Отзывы",
         link: "/reviews"
     },
     {
-        name: "Whatsapp",
+        name: "WhatsApp",
         link: "/"
     },
     {
-        name: "О НАС",
+        name: "О нас",
         link: "/about"
     }
 ]
