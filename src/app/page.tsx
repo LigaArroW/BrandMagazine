@@ -82,7 +82,7 @@ export default function Home() {
         <h4 className="text-center page__titles">наши преимущества</h4>
 
         <div className="flex flex-col gap-[44px] items-center justify-center">
-          <div className="grid items-start lg:grid-cols-4 lg:grid-rows-2 gap-[44px] md:grid-cols-2 md:grid-rows-4">
+          <div className="grid items-start lg:grid-cols-4 lg:grid-rows-2 gap-[44px] grid-cols-2 grid-rows-4">
             <OurAdvantages iconName={EIcon.Confidition} text="Гарантии конфиденциальности" />
             <OurAdvantages iconName={EIcon.Assortiment} text="Самый широкий ассортимент" />
             <OurAdvantages iconName={EIcon.Delivery} text="Доставка в день заказа при наличии на складе" />
@@ -92,7 +92,7 @@ export default function Home() {
             <OurAdvantages iconName={EIcon.UsStar} text="Нас выбирают звезды" />
             <OurAdvantages iconName={EIcon.ControlQuantity} text="Контроль качества" />
           </div>
-          <div className="grid items-start lg:grid-cols-4 lg:grid-rows-1 gap-[44px] md:grid-cols-2 md:grid-rows-2 ">
+          <div className="grid items-start lg:grid-cols-4 lg:grid-rows-1 gap-[44px] grid-cols-1 grid-rows-4 md:grid-rows-2 md:grid-cols-2 ">
             <OurAdvantages iconName={EIcon.MirrowReplica} text="ЗЕРКАЛЬНЫЕ РЕПЛИКИ" nowrap desc="В нашем интернет магазине Вы
                 приобретаете не подделки, а высокоточные
                 копии известных брендов. Больше не нужно

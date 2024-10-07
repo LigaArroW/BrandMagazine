@@ -77,7 +77,7 @@ const IconMain: FC<IconProps> = ({ name, style, onClick }) => {
 
 
     return (
-        <span className={`inline-block ${style ? style : ' 2xl:w-[96px] 2xl:h-[92px] xl:w-[69px] xl:h-[69px] md:w-[50px] md:h-[50px]'}`} onClick={onClick} >
+        <span className={`inline-block ${style ? style : ' 2xl:w-[96px] 2xl:h-[92px] lg:w-[69px] lg:h-[69px] w-[50px] h-[50px]'}`} onClick={onClick} >
             {renderComponent(name)}
         </span>
     );
