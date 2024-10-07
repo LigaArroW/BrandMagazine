@@ -1,30 +1,42 @@
 export const recommendationsData = [
     {
-        title: "Боди Alaia",
         article: "Mir-10554",
-        price: "10 000",
+        brand: "…",
+        color: "…",
+        discounted_price: "10 000",
+        id: 100,
+        main_image: "/cardProduct.png",
+        name: "Боди Alaia",
         fullPrice: "15 000",
-        image: "/cardProduct.png"
     },
     {
-        title: "Боди Alaia",
         article: "Mir-10554",
-        price: "10 000",
+        brand: "…",
+        color: "…",
+        discounted_price: "10 000",
+        id: 101,
+        main_image: "/cardProduct.png",
+        name: "Боди Alaia",
         fullPrice: "15 000",
-        image: "/cardProduct.png"
     },
     {
-        title: "Боди Alaia",
         article: "Mir-10554",
-        price: "10 000",
+        brand: "…",
+        color: "…",
+        discounted_price: "10 000",
+        id: 102,
+        main_image: "/cardProduct.png",
+        name: "Боди Alaia",
         fullPrice: "15 000",
-        image: "/cardProduct.png"
     },
     {
-        title: "Боди Alaia",
         article: "Mir-10554",
-        price: "10 000",
+        brand: "…",
+        color: "…",
+        discounted_price: "10 000",
+        id: 103,
+        main_image: "/cardProduct.png",
+        name: "Боди Alaia",
         fullPrice: "15 000",
-        image: "/cardProduct.png"
     },
 ]
