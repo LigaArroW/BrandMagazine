@@ -1,15 +1,14 @@
 "use client";
 
+import RecomendedProducts from "@/shared/components/RecomendedProducts/RecomendedProducts";
 import { AboutPayDelivery } from "@/widgets/AboutPayDelivery";
-import { Recommendations } from "@/widgets/Recommendations";
-import Image from "next/image";
 
 export default function About() {
     return (
         <div className="page relative">
             <div className="container">
                 <div className="row">
-                    <div className="page__title mb-[25px]">О НАС</div>
+                    <div className="page__title mb-[25px]">О нас</div>
                     <div className="flex flex-col md:flex-row align-baseline">
                         <div className="text-[#484F56] w-full 2xl:max-w-[1088px]">
                             <p className="text-[15px] mb-[25px] leading-[18px] md:mb-[53px] 2xl:text-[16px]">Среди огромного множества фасонов, цветов и тканей хочется выбрать то, что будет действительно актуально в нынешнем и грядущем сезонах. В нашем интернет-магазине вы сможете найти вещи для отдыха, работы и особых мероприятий</p>
@@ -30,7 +29,7 @@ export default function About() {
                         </div> */}
                     </div>
                     <AboutPayDelivery />
-                    <Recommendations />
+                    <RecomendedProducts isCart />
                 </div>
             </div>
         </div>
