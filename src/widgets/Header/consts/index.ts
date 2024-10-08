@@ -1,5 +1,5 @@
 export const SearchLink = "/search";
-export const FavoriteLink = "/favorite";
+export const FavoriteLink = "/favorites";
 export const CartLink = "/cart";
 export const ProfileLink = "/profile";
 
