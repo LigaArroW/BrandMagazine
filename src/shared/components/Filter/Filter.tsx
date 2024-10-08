@@ -4,40 +4,37 @@ import { use, useEffect, useState } from "react";
 import { useCatalogContext } from "../Contex/CatalogProvider";
 import { Icon } from "@/shared/ui/icon";
 import { Range } from "react-range";
-import { getCategory } from "@/lib/catalog/catalogAction";
-import { ICategory } from "@/types/product";
+import { getCategory, getProductsBySection } from "@/lib/catalog/catalogAction";
+import { IGetProductsBySection } from "@/types/product";
 
 interface IFilter {
     colors: string[];
+    categories: IGetProductsBySection
 }
 
 
-const Filter: React.FC<IFilter> = ({ colors }) => {
+const Filter: React.FC<IFilter> = ({ colors, categories }) => {
     const { filter, setFilter, resetFilter, price } = useCatalogContext();
     const [statePrice, setStatePrice] = useState({ min: price.min, max: price.max });
     const [isMaleOpen, setIsMaleOpen] = useState(false);
     const [isFemaleOpen, setIsFemaleOpen] = useState(false);
-    const [category, setCategory] = useState<ICategory>({} as ICategory);
 
     useEffect(() => {
         setStatePrice({ min: price.min, max: price.max });
     }, [price]);
 
-    // useEffect(() => {
-    //     const getData = async () => {
-    //         const res = await getCategory();
-    //         if (Object.values(res).length > 0) {
-    //             setCategory(prevState => ({
-    //                 ...prevState,
-    //                 ...res
-    //             }));
-    //         }
-    //     }
+    useEffect(() => {
+        if (!isMaleOpen) setFilter({ ...filter, sex: "" });
+        if (!isFemaleOpen) setFilter({ ...filter, sex: "" });
+    }, [isMaleOpen, isFemaleOpen]);
 
-    //     getData();
-    // }, []);
 
-    // console.log(category);
+    const summ = (obj: { [key: string]: number }) => {
+        const sum = Object.values(obj).reduce((acc, current) => acc + current, 0);
+        return new Intl.NumberFormat().format(sum);
+    }
+
+
 
     return (
         <div className="flex flex-col gap-[60px]">
@@ -56,27 +53,21 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                     >Женское
                         <span
                             className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
-                        >5511</span>
+                        >{summ(categories.Woman)}</span>
                     </p>
                     {isFemaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
-                        <li>
-                            <p
-                                className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
-                            >Сумки
-                                <span
-                                    className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
-                                >5511</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p
-                                className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
-                            >Аксессуары
-                                <span
-                                    className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
-                                >5511</span>
-                            </p>
-                        </li>
+                        {Object.keys(categories.Woman).map((item, index) => (
+                            <li key={item}
+                                onClick={() => setFilter({ ...filter, sex: 'women,unisex', name: item.toString() })}>
+                                <p
+                                    className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
+                                >{item}
+                                    <span
+                                        className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
+                                    >{categories.Woman[item]}</span>
+                                </p>
+                            </li>
+                        ))}
                     </ul>}
                 </div>
                 <div className="w-full py-[13px] relative border-b-2 border-[#C9C9C9] border-dotted">
@@ -92,10 +83,22 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                     >Мужское
                         <span
                             className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
-                        >5511</span>
+                        >{summ(categories.Woman)}</span>
                     </p>
                     {isMaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
-                        <li>
+                        {Object.keys(categories.Man).map((item, index) => (
+                            <li key={item}
+                                onClick={() => setFilter({ ...filter, sex: 'man,unisex', name: item.toString() })}>
+                                <p
+                                    className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
+                                >{item}
+                                    <span
+                                        className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
+                                    >{categories.Man[item]}</span>
+                                </p>
+                            </li>
+                        ))}
+                        {/* <li>
                             <p
                                 className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
                             >Сумки
@@ -112,7 +115,7 @@ const Filter: React.FC<IFilter> = ({ colors }) => {
                                     className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
                                 >5511</span>
                             </p>
-                        </li>
+                        </li> */}
                     </ul>}
                 </div>
             </div>

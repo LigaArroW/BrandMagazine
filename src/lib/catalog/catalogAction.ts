@@ -1,6 +1,6 @@
 'use server'
 
-import { ICategory, IFullProduct, IProduct, IResponseProducts } from "@/types/product"
+import { ICategory, IFullProduct, IGetProductsBySection, IProduct, IResponseProducts } from "@/types/product"
 
 export async function getColors(): Promise<string[]> {
     try {
@@ -23,7 +23,7 @@ export async function getProducts(querry: string = ''): Promise<IResponseProduct
         return res.json() as Promise<IResponseProducts>
     } catch (error) {
         console.log(error)
-        undefined
+        return undefined
     }
 }
 
@@ -69,6 +69,19 @@ export async function getRecommendedProducts(id: number | number[]): Promise<IRe
     } catch (error) {
         console.log(error)
         return undefined
+    }
+}
+
+
+
+export async function getProductsBySection(): Promise<IGetProductsBySection> {
+    try {
+        const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products_by_section/')
+        return await res.json()
+    } catch (error) {
+        console.log(error)
+        return {} as IGetProductsBySection
+
     }
 }
 
