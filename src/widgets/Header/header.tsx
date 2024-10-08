@@ -5,9 +5,13 @@ import Link from "next/link"
 import { CartLink, FavoriteLink, MenuLink, ProfileLink, SearchLink } from "./consts";
 import { useState } from "react";
 import clsx from "clsx";
+import { useCartCount } from "./useCartCount";
 
 export const Header = () => {
     const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+
+    const { cartCount } = useCartCount()
+
     return (
         <>
             <header className={clsx("bg-primary py-[7px] md:py-[15px] 2xl:py-[20px]", {
@@ -52,10 +56,12 @@ export const Header = () => {
                                         className="w-[18px] h-[18px] md:w-[25px] md:h-[25px] xl:w-[18px] xl:h-[18px] 2xl:w-[25px] 2xl:h-[25px]" 
                                         src="/icon/cart.svg" 
                                     />
-                                    <span className={clsx(
-                                        "block bg-secondary w-[15px] h-[15px] rounded-full center-flex lg:w-[20px] lg:h-[20px]",
-                                        "text-white text-[10px]"
-                                    )}>2</span>
+                                    {cartCount > 0 &&
+                                        <span className={clsx(
+                                            "block bg-secondary w-[15px] h-[15px] rounded-full center-flex lg:w-[20px] lg:h-[20px]",
+                                            "text-white text-[10px]"
+                                        )}>{cartCount}</span>
+                                    }
                                 </Link>
                                 <Link 
                                     className={clsx("text-white text-[10px] md:text-[14px] xl:text-[10px] 2xl:text-[14px] leading-[18px] md:leading-[24px] xl:leading-[10px] 2xl:leading-[23px] uppercase font-medium max-[375px]:hidden", {

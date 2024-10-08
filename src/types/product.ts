@@ -47,3 +47,12 @@ export interface ICategory {
     Женское: ISubCategory
 }
 
+interface BagTypes {
+    [key: string]: number
+}
+export interface IGetProductsBySection {
+    Man: BagTypes;
+    Woman: BagTypes;
+    Other: BagTypes;
+}
+

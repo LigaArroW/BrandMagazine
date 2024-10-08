@@ -6,7 +6,7 @@ import { IOrdering, useCatalogContext } from "../Contex/CatalogProvider";
 import queryString from "query-string";
 import { useEffect, useState } from "react";
 import { getProducts } from "@/lib/catalog/catalogAction";
-import { IResponseProducts } from "@/types/product";
+import { IGetProductsBySection, IResponseProducts } from "@/types/product";
 import CardProduct from "../CardProduct/CardProduct";
 import Pagination from 'react-paginate';
 
@@ -16,9 +16,10 @@ import Portal from "../Modals/Portal";
 
 interface ICatalog {
     colors: string[]
+    categories: IGetProductsBySection
 }
 
-const Catalog: React.FC<ICatalog> = ({ colors }) => {
+const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
 
     const { filter, setFilter, resetFilter, setPrice } = useCatalogContext();
     const [products, setProducts] = useState<IResponseProducts>({} as IResponseProducts);
@@ -220,7 +221,7 @@ const Catalog: React.FC<ICatalog> = ({ colors }) => {
                                     onClick={() => setIsModal(false)}
                                 />
                             </div>
-                            <Filter colors={colors} />
+                            <Filter colors={colors} categories={categories} />
                         </div>
                     </div>
                 </Portal>}

@@ -1,11 +1,11 @@
 "use client";
+import RecomendedProducts from "@/shared/components/RecomendedProducts/RecomendedProducts";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { Form } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 import { Textarea } from "@/shared/ui/textarea";
 import { AboutPayDelivery } from "@/widgets/AboutPayDelivery";
-import { Recommendations } from "@/widgets/Recommendations";
 
 export default function Contacts() {
 
@@ -50,7 +50,7 @@ export default function Contacts() {
                         </div>
                     </div>
                     <AboutPayDelivery />
-                    <Recommendations />
+                    <RecomendedProducts isCart />
                 </div>
             </div>
         </div>
