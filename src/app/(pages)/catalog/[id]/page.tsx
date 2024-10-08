@@ -61,7 +61,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                             ">Размер</p>
                             <div className="flex gap-[8px]">
                                 {
-                                    product.sizes && product.sizes.map(size => (
+                                    product.sizes && product.sizes.filter(size => size.size && size.size.name).map(size => (
                                         <div key={size.quantity}
                                             className={`uppercase p-[8px] border w-fit text-black text-[15px] xl:text-[12px] 2xl:text-[16px] bg-white ${size.quantity ? "cursor-pointer bg-heavyGray" : "cursor-default"}`}>
                                             {size.size.name}
@@ -80,34 +80,6 @@ export default async function Page({ params }: { params: { id: string } }) {
                     </div>
 
                 </div>
-                {/* <div className="flex flex-col xl:flex-row gap-8 md:gap-[25px] xl:gap-5 mb-[30px]  border-b-4 border-dotted border-[#C9C9C9] pb-[25px] lg:pb-[41px] xl:mb-[56px] md:mb-[41px] 2xl:pb-[56px] 2xl:mb-[75px]">
-                    <div className="select-none w-full xl:w-1/2 text-heavyGray flex flex-col gap-6 2xl:gap-[35px]">
-                        <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px]">Оплата</h4>
-                        <ul className="text-[15px] 2xl:text-[20px]">
-                            <li className="">- Наличными или переводом после получения заказа</li>
-                        </ul>
-                    </div>
-                    <div className="w-full xl:w-1/2 text-heavyGray flex flex-col gap-6 2xl:gap-[35px]">
-                        <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px]">Доставка</h4>
-                        <ul className="text-[15px] 2xl:text-[20px]">
-                            <li className="">- Доставка в приделах МКАД бесплатно</li>
-                            <li className="">- За МКАД и МО до 2000р</li>
-                            <li className="">- По России 100% предоплата, доставка осуществляется через СДЭК</li>
-                        </ul>
-                    </div>
-                </div> */}
-                {/* <div className="mb-[25px] md:mb-[68px] xl:mb-[47px] 2xl:mb-[64px]">
-                    <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px] inline-block text-heavyGray mb-[30px] md:mb-[42px] xl:mb-[49px] 2xl:mb-[67px]">Вас также может заинтересовать</h4>
-                    <div className="grid gap-[45px] grid-cols-2 xl:grid-cols-4 ">
-                        {recomendedProducts && recomendedProducts.recommended_products.map((product, index) => {
-                            return (
-                                <div className={`${index > 1 ? "hidden xl:block" : ""}`} key={product.id}>
-                                    <CardProduct product={product} />
-                                </div>
-                            )
-                        })}
-                    </div>
-                </div> */}
                 <PaymentAndDelivery />
                 <RecomendedProducts id={[Number(params.id)]} />
             </section>

@@ -23,10 +23,11 @@ export default function RootLayout({
       <body className={inter.className + (" flex flex-col min-h-screen")}>
         <Providers>
           <MainProvider>
-            <div id="modal-portal" />
-            <Header />
-            {children}
-            <Footer />
+            <div id="modal-portal" >
+              <Header />
+              {children}
+              <Footer />
+            </div>
           </MainProvider>
         </Providers>
       </body>
