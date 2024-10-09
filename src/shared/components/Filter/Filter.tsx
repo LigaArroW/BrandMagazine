@@ -172,9 +172,48 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                 </div>
 
             </div>
-            <div className="w-full flex flex-col gap-[42px] items-center mb-[50px]">
+            <div className="w-full flex flex-col gap-[42px] items-start mb-[50px]">
                 <h4 className="title self-start">Цена</h4>
-                <Range
+                <div className="flex gap-[25px]">
+
+                    <label className="flex gap-[14px] items-center font-[700] text-[10px] md:text-[17px] xl:text-[14]">
+                        от
+                        <input type="text"
+                            inputMode="numeric"
+                            placeholder={price.min !== null ? price.min.toString() : ''}
+                            value={filter.price_min || ''}
+
+                            onChange={(e) => {
+                                const value = e.target.value;
+                                const regex = /^\d*$/; // регулярное выражение для проверки только цифр
+                                if (regex.test(value)) {
+                                    setStatePrice({ ...statePrice, min: value === '' ? null : Number(value) });
+                                    setFilter({ ...filter, offset: null, price_min: value === '' ? null : Number(value) });
+                                }
+                            }}
+                            className="w-[76px] h-[33px] bg-[#D9D9D9] rounded text-heavyGray pl-4 md:w-[120px] md:h-[44px] xl:w-[76px] xl:h-[25px] 2xl:w-[98px] 2xl:h-[36px]" />
+                    </label>
+                    <label className="flex gap-[14px] items-center font-[700] text-[10px] md:text-[17px] xl:text-[14]">
+                        до
+                        <input type="text"
+                            inputMode="numeric"
+                            placeholder={price.max !== null ? price.max.toString() : ''}
+                            value={filter.price_max || ''}
+                            onChange={(e) => {
+                                const value = e.target.value;
+                                const regex = /^\d*$/; // регулярное выражение для проверки только цифр
+                                if (regex.test(value)) {
+                                    setStatePrice({ ...statePrice, max: value === '' ? null : Number(value) });
+                                    setFilter({ ...filter, offset: null, price_max: value === '' ? null : Number(value) });
+                                }
+                            }}
+                            className="w-[76px] h-[33px] bg-[#D9D9D9] rounded text-heavyGray pl-4 md:w-[120px] md:h-[44px] xl:w-[76px] xl:h-[25px] 2xl:w-[98px] 2xl:h-[36px]" />
+                    </label>
+
+
+
+                </div>
+                {/* <Range
                     values={[statePrice.min || price.min, statePrice.max || price.max]}
                     onChange={([min, max]) => {
                         // setFilter({ ...filter, offset: null, price_min: min, price_max: max })
@@ -233,7 +272,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                     }}
 
                     step={1000}
-                />
+                /> */}
             </div>
         </div>
     );

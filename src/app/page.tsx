@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <div className="container bg-white">
       <h2 className="
-      text-center
-       page__titles
+      text-center uppercase
+      py-[31px] md:py-[58px] 2xl:py-[84px] text-heavyGray text-[21px] md:text-[24px] 2xl:text-[32px]
      ">
         Зеркальные реплики мировых брендов
       </h2>

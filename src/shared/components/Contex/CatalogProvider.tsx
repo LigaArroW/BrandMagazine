@@ -35,8 +35,8 @@ interface IFilter {
 }
 
 interface IPrice {
-    min: number
-    max: number
+    min: number | null
+    max: number | null
 
 }
 
@@ -67,7 +67,7 @@ export const useCatalogContext = () => useContext(CatalogContext);
 const CatalogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
     const [filter, setFilter] = useState<IFilter>(defaultFilter);
-    const [price, setPrice] = useState<IPrice>({ min: 0, max: 1 });
+    const [price, setPrice] = useState<IPrice>({ min: null, max: 1 });
 
     const resetFilter = () => {
         setFilter(defaultFilter);
