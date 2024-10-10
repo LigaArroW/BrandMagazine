@@ -96,8 +96,8 @@ const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id, product }) => {
                     className="uppercase select-none px-[32px] py-[14px] bg-secondary text-white
                     font-[700] text-[12px]
                     md:px-[48px] md:py-[14px] 
-                    xl:px-[38px] xl:py-[11px] xl:text-[10px]
-                    2xl:px-[50px] 2xl:py-[15px] 2xl:text-[13px]
+                    xl:px-[38px] xl:py-[11px] xl:text-[12px]
+                    2xl:px-[50px] 2xl:py-[15px] 2xl:text-[14px]
                     "
                     onClick={handleClickCart}
                 >
@@ -113,7 +113,7 @@ const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id, product }) => {
                     stroke="black"
                     className="size-[17px] xl:size-[14px] 2xl:size-[18px]"
                 />
-                <p className="text-nowrap font-[700] text-[#353B41] text-[12px] xl:text-[10px] 2xl:text-[13px]">Купить в один клик</p>
+                <p className="text-nowrap font-[700] text-[#353B41] text-[12px] xl:text-[12px] 2xl:text-[14px]">Купить в один клик</p>
             </button>
             <button type="button"
                 className="flex relative select-none bg-primary items-center py-[12px] px-[18px] gap-[16px] xl:py-[10px] xl:px-[14px] 2xl:py-[13px] 2xl:px-[19px]"
@@ -124,7 +124,7 @@ const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id, product }) => {
                     stroke="white"
                     className="size-[14px] xl:size-[11px] 2xl:size-[14px]"
                 />
-                <p className="text-nowrap font-[700] text-white text-[12px] xl:text-[10px] 2xl:text-[13px]">{favorites.filter(item => item.id === Number(id)).length > 0 ? 'В избранном' : 'Добавить в избранное'}</p>
+                <p className="text-nowrap font-[700] text-white text-[12px] xl:text-[12px] 2xl:text-[14px]">{favorites.filter(item => item.id === Number(id)).length > 0 ? 'В избранном' : 'Добавить в избранное'}</p>
             </button>
 
             <button type="button"

@@ -22,7 +22,7 @@ export default function NewProductsList() {
 
     const loadProducts = async () => {
         const qu = queryString.stringify({...filter, 
-            ordering: 'created_at',
+            ordering: '-created_at',
             limit: limit
         }, {
             skipEmptyString: true,
