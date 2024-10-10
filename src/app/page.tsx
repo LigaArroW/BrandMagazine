@@ -16,7 +16,7 @@ export default function Home() {
     <div className="container bg-white">
       <h2 className="
       text-center uppercase
-      py-[31px] md:py-[58px] 2xl:py-[84px] text-heavyGray text-[21px] md:text-[24px] 2xl:text-[32px]
+      py-[31px] md:py-[58px] 2xl:py-[84px] text-heavyGray text-[21px] md:text-[22px] lg:text-[28px] 2xl:text-[42px] px-6
      ">
         Зеркальные реплики мировых брендов
       </h2>
@@ -25,14 +25,14 @@ export default function Home() {
 
         <div className="bg-primary flex items-center justify-end relative">
           <ul className="w-full pr-[20%] flex flex-col items-start">
-            <li className="text-white 2xl:text-[33px] xl:text-[24px]">Аксессуары</li>
-            <li className="text-white uppercase 2xl:text-[13px] xl:text-[10px] relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-[2px] before:bg-white">
+            <li className="text-white 2xl:text-[42px] xl:text-[24px]">Аксессуары</li>
+            <li className="text-white uppercase 2xl:text-[18px] xl:text-[10px] relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-[2px] before:bg-white">
               <Link href={"/catalog"}>в каталог</Link>
             </li>
           </ul>
           <Image
             src={Eye}
-            alt="Eye"
+            alt="Glasses"
             width={500}
             height={500}
             className="object-contain absolute z-12 left-0 -bottom-10 lg:left-0 lg:-bottom-24 w-[250px] h-[250px]  2xl:w-[500px] 2xl:h-[500px] xl:w-[400px] xl:h-[400px] lg:w-[300px] lg:h-[400px] lg:z-8"
@@ -45,8 +45,8 @@ export default function Home() {
 
           </Link> */}
           <ul className="w-full pl-[20%] flex flex-col items-end">
-            <li className="text-white 2xl:text-[33px] xl:text-[24px]">Сумки</li>
-            <li className="text-white uppercase 2xl:text-[13px] xl:text-[10px] relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-[2px] before:bg-white ">
+            <li className="text-white 2xl:text-[42px] xl:text-[24px]">Сумки</li>
+            <li className="text-white uppercase 2xl:text-[18px] xl:text-[10px] relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-[2px] before:bg-white ">
               <Link href={"/catalog"}>в каталог</Link>
             </li>
           </ul>

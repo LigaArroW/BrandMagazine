@@ -24,12 +24,17 @@ export const Header = () => {
                         <div className="flex items-center">
                             <Logo />
                             <div className={clsx(
-                                "hidden lg:flex ml-[33px] 2xl:ml-[45px] items-center gap-[40px] 2xl:gap-[54px]", 
+                                "hidden xl:flex ml-[33px] 2xl:ml-[50px] items-center gap-[40px] ",
+                                "lg:gap-[24px]",
+                                "xl:gap-[42px]",
+                                "2xl:gap-[54px]"
                             )}>
                                 {MenuLink.map((item, index) => (
                                     <Link className={clsx(
-                                        "text-white text-[10px] font-medium uppercase leading-[17px] underline",
-                                        "2xl:text-[14px] 2xl:leading-[23px]"
+                                        "text-white text-[2px] font-medium uppercase leading-[17px] underline",
+                                        "lg:text-[12px]",
+                                        "xl:text-[15px]",
+                                        "2xl:text-[16px] 2xl:leading-[23px]"
                                     )} href={item.link} key={index}>
                                         {item.name}
                                     </Link>
@@ -37,36 +42,36 @@ export const Header = () => {
                             </div>
                             <div className="ml-auto flex items-center gap-[17px] md:gap-[23px] xl:gap-[17px]">
                                 <Link href={SearchLink}>
-                                    <Icon 
+                                    <Icon
                                         stroke={isOpenMenu ? "black" : "white"}
-                                        className="w-[18px] h-[18px] md:w-[25px] md:h-[25px] xl:w-[18px] xl:h-[18px] 2xl:w-[25px] 2xl:h-[25px]" 
-                                        src="/icon/search.svg" 
+                                        className="w-[18px] h-[18px] md:w-[28px] md:h-[28px] 2xl:w-[28px] 2xl:h-[28px]"
+                                        src="/icon/search.svg"
                                     />
                                 </Link>
                                 <Link href={FavoriteLink}>
                                     <Icon
                                         stroke={isOpenMenu ? "black" : "white"}
-                                        className="w-[18px] h-[18px] md:w-[25px] md:h-[25px] xl:w-[18px] xl:h-[18px] 2xl:w-[25px] 2xl:h-[25px]" 
-                                        src="/icon/favorite.svg" 
+                                        className="w-[18px] h-[18px] md:w-[28px] md:h-[28px] 2xl:w-[28px] 2xl:h-[28px]"
+                                        src="/icon/favorite.svg"
                                     />
                                 </Link>
                                 <Link href={CartLink} className="flex items-center gap-[8px] md:gap-[11px]">
-                                    <Icon 
+                                    <Icon
                                         stroke={isOpenMenu ? "black" : "white"}
-                                        className="w-[18px] h-[18px] md:w-[25px] md:h-[25px] xl:w-[18px] xl:h-[18px] 2xl:w-[25px] 2xl:h-[25px]" 
-                                        src="/icon/cart.svg" 
+                                        className="w-[18px] h-[18px] md:w-[28px] md:h-[28px] 2xl:w-[28px] 2xl:h-[28px]"
+                                        src="/icon/cart.svg"
                                     />
                                     {cartCount > 0 &&
                                         <span className={clsx(
                                             "block bg-secondary w-[15px] h-[15px] rounded-full center-flex lg:w-[20px] lg:h-[20px]",
-                                            "text-white text-[10px]"
+                                            "text-white text-[12px]"
                                         )}>{cartCount}</span>
                                     }
                                 </Link>
-                                <Link 
-                                    className={clsx("text-white text-[10px] md:text-[14px] xl:text-[10px] 2xl:text-[14px] leading-[18px] md:leading-[24px] xl:leading-[10px] 2xl:leading-[23px] uppercase font-medium max-[375px]:hidden", {
+                                <Link
+                                    className={clsx("text-white text-[10px] md:text-[14px] xl:text-[14px] 2xl:text-[14px] leading-[18px] md:leading-[24px] xl:leading-[10px] 2xl:leading-[23px] uppercase font-medium max-[530px]:hidden", {
                                         "text-black": isOpenMenu
-                                    })} 
+                                    })}
                                     href={ProfileLink}
                                 >
                                     Профиль
@@ -88,7 +93,7 @@ export const Header = () => {
                     {isOpenMenu && (
                         <div className="row">
                             <div className={clsx(
-                                "flex flex-col gap-[33px] mt-[19px] md:mt-[36px]", 
+                                "flex flex-col gap-[33px] mt-[19px] md:mt-[36px]",
                             )}>
                                 {MenuLink.map((item, index) => (
                                     <Link className={clsx(
