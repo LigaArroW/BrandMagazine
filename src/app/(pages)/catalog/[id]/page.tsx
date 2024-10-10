@@ -6,7 +6,6 @@ import CatalogImages from "@/shared/components/Catalog/CatalogImages/CatalogImag
 import PaymentAndDelivery from "@/shared/components/PaymentAndDelivery/PaymentAndDelivery";
 import RecomendedProducts from "@/shared/components/RecomendedProducts/RecomendedProducts";
 
-
 export async function generateStaticParams() {
     const products = await getProducts()
     if (!products || !products.results) return []
@@ -20,23 +19,19 @@ export default async function Page({ params }: { params: { id: string } }) {
     if (!product) return null
     console.log("🚀 ~ Page ~ product:", product.sizes)
 
-
-
-
     return (
         <main className="container mt-[38px] md:mt-[62px] lg:mt-[75px] xl:mt-[100px]" >
             <section className="row ">
                 <div className="flex flex-col mb-[21px] pb-[25px] border-b-4 border-dotted border-[#C9C9C9] gap-[32px] items-center md:mb-[42px] 2xl:mb-[56px] xl:items-start xl:flex-row xl:gap-[50px] xl:pb-[40px] ">
                     <CatalogImages product={product} />
                     <div className="w-full xl:w-1/2  md:max-w-[650px] xl:max-w-full ">
-                        <div className="justify-between mb-[11px] hidden xl:flex">
-                            <p className="font-[700] text-heavyGray text-[12px]">Бренды</p>
+                        <div className="justify-start items-center gap-4 mb-[11px] hidden xl:flex">
                             <ButtonWithSvg
                                 href="/catalog"
                                 path="/icon/arrow-next.svg"
-                                style="cursor-pointer w-[30px] h-[10px]  rotate-180 "
-
+                                style="cursor-pointer w-[38px] h-[14px] rotate-180 "
                             />
+                            <p className="font-[700] text-heavyGray text-[16px]">Бренды</p>
 
                         </div>
                         <div className="flex flex-row justify-between mb-[17px] xl:flex-col xl:gap-[15px]">
