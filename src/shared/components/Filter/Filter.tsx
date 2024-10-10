@@ -127,14 +127,14 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                         src="/icon/search.svg"
                         fill="transparent"
                         stroke="black"
-                        className="w-[20px] h-[20px] absolute left-2 top-1/2 -translate-y-1/2 "
+                        className="w-[20px] h-[20px] absolute left-4 top-1/2 -translate-y-1/2 "
                     />
                     <input
                         type="text"
                         value={filter.brand}
-                        placeholder="Поиск"
+                        placeholder="Искать бренд"
                         onChange={(e) => setFilter({ ...filter, offset: null, brand: e.target.value.toLowerCase() })}
-                        className="w-full h-full bg-[#D9D9D9] pl-8  placeholder:absolute placeholder:right-2 placeholder:top-1/2 placeholder:-translate-y-1/2  placeholder:text-heavyGray placeholder:font-[400] placeholder:leading-[10px] placeholder:text-center"
+                        className="w-full h-full bg-[#D9D9D9] pl-12 placeholder:absolute placeholder:left-12 placeholder:top-1/2 placeholder:-translate-y-1/2  placeholder:text-heavyGray placeholder:font-[400] placeholder:leading-[10px]"
                     />
                 </label>
 
