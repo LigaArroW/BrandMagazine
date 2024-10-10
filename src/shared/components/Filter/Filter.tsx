@@ -58,7 +58,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                     {isFemaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
                         {Object.keys(categories.Woman).map((item, index) => (
                             <li key={item}
-                                onClick={() => setFilter({ ...filter, sex: 'women,unisex', name: item.toString() })}>
+                                className={`${categories.Woman[item] === 0 ? "hidden" : ""}`} onClick={() => setFilter({ ...filter, sex: 'women,unisex', name: item.toString() })}>
                                 <p
                                     className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
                                 >{item}
@@ -88,6 +88,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                     {isMaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
                         {Object.keys(categories.Man).map((item, index) => (
                             <li key={item}
+                                className={`${categories.Man[item] === 0 ? "hidden" : ""}`}
                                 onClick={() => setFilter({ ...filter, sex: 'man,unisex', name: item.toString() })}>
                                 <p
                                     className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"

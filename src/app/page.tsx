@@ -90,7 +90,7 @@ export default function Home() {
             <OurAdvantages iconName={EIcon.UsStar} text="Нас выбирают звезды" />
             <OurAdvantages iconName={EIcon.ControlQuantity} text="Контроль качества" />
           </div>
-          <div className="grid items-start lg:grid-cols-4 lg:grid-rows-1 gap-[44px] grid-cols-1 grid-rows-4 md:grid-rows-2 md:grid-cols-2 ">
+          <div className="grid items-start lg:grid-cols-4 lg:grid-rows-1 gap-[44px] grid-cols-1 md:grid-rows-2 md:grid-cols-2 ">
             <OurAdvantages iconName={EIcon.MirrowReplica} text="ЗЕРКАЛЬНЫЕ РЕПЛИКИ" nowrap desc="В нашем интернет магазине Вы
                 приобретаете не подделки, а высокоточные
                 копии известных брендов. Больше не нужно
@@ -113,8 +113,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="px-[18%] mb-[36px]">
-        <h4 className="text-center page__titles">Закажите онлайн прямо сейчас</h4>
+      <div className="px-[18%] py-[36px] bg-letter">
+        <h4 className="uppercase text-center font-[600] mb-[32px] text-heavyGray text-[19px] md:text-[24px] 2xl:text-[32px]">Закажите онлайн прямо сейчас</h4>
         <p className="font-AlibabaPuhuiti font-[400] text-heavyGray 2xl:text-[20px] xl:text-[15px] md:text-[14px]">
           Оформить заказ можно через корзину на сайте, через кнопочку заказать в один клик, по телефону
           <a href="tel:+9032870813" className="text-black underline px-2 text-nowrap">+7 903 287-08-13</a>
