@@ -83,7 +83,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                     >Мужское
                         <span
                             className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
-                        >{summ(categories.Woman)}</span>
+                        >{summ(categories.Man)}</span>
                     </p>
                     {isMaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
                         {Object.keys(categories.Man).map((item, index) => (
