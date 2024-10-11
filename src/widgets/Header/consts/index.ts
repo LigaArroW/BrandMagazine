@@ -10,7 +10,7 @@ export const MenuLink = [
     },
     {
         name: "Новинки",
-        link: "/new-product"
+        link: "/new-products"
     },
     {
         name: "Каталог",

@@ -27,16 +27,15 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
     const [totalPages, setTotalPages] = useState(0);
     const [isModal, setIsModal] = useState(false);
 
-
-
     const loadProducts = async () => {
-
 
         const qu = queryString.stringify(filter, {
             skipEmptyString: true,
             skipNull: true,
         });
         const productsData = await getProducts(qu);
+        console.log({productsData});
+        
         if (!productsData) return
         setProducts(productsData);
         if (productsData.max_product_price && productsData.min_product_price) {
@@ -52,8 +51,6 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
         loadProducts();
 
     }, [filter]);
-
-
 
     return (
         <>
@@ -78,22 +75,22 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
                             src="/icon/search.svg"
                             fill="transparent"
                             stroke="black"
-                            className="w-[20px] h-[20px] absolute left-2 top-1/2 -translate-y-1/2 "
+                            className="w-[20px] h-[20px] absolute left-4 top-1/2 -translate-y-1/2 "
                         />
                         <input
                             type="text"
                             value={filter.name}
                             placeholder="Поиск"
                             onChange={(e) => setFilter({ ...filter, name: e.target.value })}
-                            className="w-full h-full bg-[#D9D9D9] pl-8  placeholder:absolute placeholder:right-10 placeholder:top-1/2 placeholder:-translate-y-1/2  placeholder:text-heavyGray placeholder:font-[400] placeholder:leading-[10px] placeholder:text-center"
+                            className="w-full h-full bg-[#D9D9D9] pl-12 placeholder:absolute placeholder:left-12 placeholder:top-1/2 placeholder:-translate-y-1/2 placeholder:text-heavyGray placeholder:font-[400] placeholder:leading-[10px]"
                         />
                     </label>
-                    <p className="font-[700] hidden xl:block text-heavyGray xl:text-[10px] 2xl:text-[13px] ">
-                        Отображение
-                        <span className="ml-2">{filter.offset! + 1} - {filter.limit + filter.offset!} ИЗ {products.count}</span>
+                    <p className="font-[700] hidden xl:block text-heavyGray xl:text-[10px] xl:text-[12px] 2xl:text-[15px] ">
+                        Результаты
+                        <span className="ml-2">{filter.offset! + 1} - {filter.limit + filter.offset!} из {products.count}</span>
                     </p>
-                    <div className="font-[700]  gap-2 hidden xl:flex text-heavyGray xl:text-[10px] 2xl:text-[13px]">
-                        Показать
+                    <div className="font-[700]  gap-2 hidden xl:flex text-heavyGray xl:text-[10px] xl:text-[12px] 2xl:text-[15px]">
+                        Показывать
                         <ul className="flex gap-2">
                             <li
                                 className={`cursor-pointer ${filter.limit === 16 && "underline underline-offset-4"}`}
@@ -110,7 +107,7 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
                         </ul>
                     </div>
 
-                    <div className="uppercase relative pr-[30px] cursor-pointer font-[700] text-heavyGray text-[14px] xl:text-[13px] 2xl:text-[13px] lg:text-[10px] "
+                    <div className="uppercase relative pr-[30px] cursor-pointer font-[700] text-heavyGray text-[14px] xl:text-[13px] 2xl:text-[15px] xl:text-[12px] lg:text-[10px] "
                         onClick={() => setIsSortOpen(!isSortOpen)}
                     >
                         <div className="flex gap-4 justify-between items-center">

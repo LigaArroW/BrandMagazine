@@ -10,12 +10,12 @@
   --heavy-gray: #484f56;
   --black: #000000;
   --middle-gray: #6d757e;
-  --light-gray: #eaedf0;
+  --light-gray: #d9dfe5;
 }
 
 body {
-  background: #fff url("/bg.png") repeat;
-  background-size: cover;
+  background: #F3F3F3 url("/bg.jpg") repeat;
+  background-size: contain;
 }
 
 input,
