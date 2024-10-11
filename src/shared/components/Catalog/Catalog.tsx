@@ -34,7 +34,6 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
             skipNull: true,
         });
         const productsData = await getProducts(qu);
-        console.log({productsData});
         
         if (!productsData) return
         setProducts(productsData);
