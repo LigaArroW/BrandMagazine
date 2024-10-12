@@ -232,7 +232,6 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
 
             </div >
 
-
         </>
     );
 };

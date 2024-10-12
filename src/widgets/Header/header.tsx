@@ -41,7 +41,7 @@ export const Header = () => {
                                 ))}
                             </div>
                             <div className="ml-auto flex items-center gap-[17px] md:gap-[23px] xl:gap-[17px]">
-                                <Link href={SearchLink}>
+                                <Link href="/catalog">
                                     <Icon
                                         stroke={isOpenMenu ? "black" : "white"}
                                         className="w-[18px] h-[18px] md:w-[28px] md:h-[28px] 2xl:w-[28px] 2xl:h-[28px]"

@@ -1,0 +1,102 @@
+@mixin remove-outer-borders($columns, $total) {
+   @for $i from 1 through $total {
+     // Первая строка
+     @if $i <= $columns {
+       &:nth-child(#{$i}) {
+         border-top: none;
+       }
+     }
+     // Первая колонка
+     @if ($i - 1) % $columns == 0 {
+       &:nth-child(#{$i}) {
+         border-left: none;
+       }
+     }
+     // Последняя колонка
+     @if $i % $columns == 0 {
+       &:nth-child(#{$i}) {
+         border-right: none;
+       }
+     }
+     // Последняя строка
+     @if $i > ($total - $columns) {
+       &:nth-child(#{$i}) {
+         border-bottom: none;
+       }
+     }
+   }
+}
+
+.Advantages {
+   $row-length: 4;
+   background-image: url('/bg.jpg');
+   background-position: left top;
+   background-repeat: repeat;
+   background-size: contain;
+   margin-top: 40px;
+   padding-bottom: 60px;
+   padding-inline: 3vw;
+   padding-top: 80px;
+
+   @media only screen and (max-width: 767px) {
+      padding-bottom: 30px;
+      padding-top: 50px;
+   }
+
+   .page__titles {
+      margin-top: 0;
+      margin-bottom: 65px;
+   }
+
+   &__list {
+      display: grid;
+      grid-template-columns: repeat($row-length, 1fr);
+
+      > div {
+         border-left: 1px solid #bbb;
+         border-top: 1px solid #bbb;
+         padding: 2rem;
+         @media only screen and (max-width: 767px) {
+            padding: 1.25rem .5rem;
+         }
+      }
+   }
+   @media only screen and (min-width: 1460.8px) {
+      $row-length: 4;
+      &__list {
+        grid-template-columns: repeat($row-length, 1fr);
+        
+        > div {
+          @include remove-outer-borders($row-length, 16);
+        }
+      }
+   }
+
+   @media only screen and (min-width: 740.8px) and (max-width: 1460px) {
+      $row-length: 2;
+      &__list {
+        grid-template-columns: repeat($row-length, 1fr);
+        
+        > div {
+          @include remove-outer-borders($row-length, 16);
+        }
+      }
+   }
+
+   @media only screen and (max-width: 740px) {
+      $row-length: 2;
+      &__list {
+        grid-template-columns: repeat($row-length, 1fr);
+        
+        > div {
+          @include remove-outer-borders($row-length, 16);
+        }
+      }
+
+      .OurAdvantage_desc {
+         grid-column-start: 1;
+         grid-column-end: 3;
+         border-inline: none;
+      }
+   }
+}

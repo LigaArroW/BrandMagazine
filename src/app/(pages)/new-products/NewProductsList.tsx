@@ -18,7 +18,6 @@ export default function NewProductsList() {
         {} as IResponseProducts
     );
     const [totalPages, setTotalPages] = useState(0);
-    console.log(typeof(filter));
 
     const loadProducts = async () => {
         const qu = queryString.stringify({...filter, 
@@ -29,7 +28,6 @@ export default function NewProductsList() {
             skipNull: true
         });
         const newProductsData = await getProducts(qu);
-        console.log({newProductsData});
 
         if (!newProductsData) return
         setNewProducts(newProductsData);

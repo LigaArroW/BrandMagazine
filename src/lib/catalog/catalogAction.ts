@@ -72,8 +72,6 @@ export async function getRecommendedProducts(id: number | number[]): Promise<IRe
     }
 }
 
-
-
 export async function getProductsBySection(): Promise<IGetProductsBySection> {
     try {
         const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/api/products_by_section/')
@@ -81,7 +79,25 @@ export async function getProductsBySection(): Promise<IGetProductsBySection> {
     } catch (error) {
         console.log(error)
         return {} as IGetProductsBySection
+    }
+}
 
+export async function getFavorites(
+    querry: string = '',
+    token: string = ''
+): Promise<any> {
+    try {
+        const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + `/api/favorites/?${querry}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return await res.json()
+    } catch (error) {
+        console.log(error)
+        return {} as IResponseProducts
     }
 }
 

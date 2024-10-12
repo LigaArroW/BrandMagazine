@@ -1,28 +1,28 @@
 "use client";
 
 import { AboutPayDelivery } from "@/widgets/AboutPayDelivery";
-import { favoritesData } from "./consts";
-import { CardProduct } from "@/shared/ui/cardProduct";
 import RecomendedProducts from "@/shared/components/RecomendedProducts/RecomendedProducts";
+import { useMainContext } from "@/shared/components/Contex/MainProvider";
+import { FavoritesList } from "./FavoritesList";
+import Link from "next/link";
+import { ProfileLink } from "@/widgets/Header/consts";
 
 export default function Favorites() {
+
+   const { accessToken } = useMainContext()
+
     return (
         <div className="page">
             <div className="container">
                 <div className="row">
                     <div className="page__title">Избранное</div>
-                    <div className="grid grid-cols-2 gap-[10px] md:gap-[49px] lg:grid-cols-4 xl:gap-[47px] 2xl:gap-[77px] mb-[49px] md:mb-[53px] xl:mb-[42px] 2xl:mb-[57px]">
-                        {favoritesData.map((item, index) => (
-                            <CardProduct 
-                                key={index}
-                                title={item.title}
-                                article={item.article}
-                                price={item.price}
-                                fullPrice={item.fullPrice}
-                                image={item.image}
-                            />
-                        ))}
-                    </div>
+                    {accessToken ? 
+                        <FavoritesList />
+                        :
+                        <>
+                            Для просмотра списка избранного необходимо <Link className="underline" href={ProfileLink}>авторизоваться</Link>
+                        </>
+                    }
                     <AboutPayDelivery />
                     <RecomendedProducts isCart />
                 </div>

@@ -1,17 +1,15 @@
 'use client';
-
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCatalogContext } from "../Contex/CatalogProvider";
 import { Icon } from "@/shared/ui/icon";
-import { Range } from "react-range";
-import { getCategory, getProductsBySection } from "@/lib/catalog/catalogAction";
+// import { Range } from "react-range";
+// import { getCategory, getProductsBySection } from "@/lib/catalog/catalogAction";
 import { IGetProductsBySection } from "@/types/product";
 
 interface IFilter {
     colors: string[];
     categories: IGetProductsBySection
 }
-
 
 const Filter: React.FC<IFilter> = ({ colors, categories }) => {
     const { filter, setFilter, resetFilter, price } = useCatalogContext();
@@ -33,8 +31,6 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
         const sum = Object.values(obj).reduce((acc, current) => acc + current, 0);
         return new Intl.NumberFormat().format(sum);
     }
-
-
 
     return (
         <div className="flex flex-col gap-[60px]">
@@ -61,7 +57,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                                 className={`${categories.Woman[item] === 0 ? "hidden" : ""}`}
                                 onClick={() => setFilter({ ...filter, sex: 'woman,unisex', category: [item.toString()] })}>
                                 <p
-                                    className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
+                                    className="cursor-pointer flex items-center gap-[1em] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px] border-t-[1px] pt-1"
                                 >{item}
                                     <span
                                         className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
@@ -92,7 +88,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                                 className={`${categories.Man[item] === 0 ? "hidden" : ""}`}
                                 onClick={() => setFilter({ ...filter, sex: 'man,unisex', category: [item.toString()] })}>
                                 <p
-                                    className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
+                                    className="cursor-pointer flex items-center gap-[1em] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px] border-t-[1px] pt-1"
                                 >{item}
                                     <span
                                         className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
