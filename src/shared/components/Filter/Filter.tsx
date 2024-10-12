@@ -57,7 +57,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                                 className={`${categories.Woman[item] === 0 ? "hidden" : ""}`}
                                 onClick={() => setFilter({ ...filter, sex: 'woman,unisex', category: [item.toString()] })}>
                                 <p
-                                    className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
+                                    className="cursor-pointer flex items-center gap-[1em] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px] border-t-[1px] pt-1"
                                 >{item}
                                     <span
                                         className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
@@ -88,7 +88,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                                 className={`${categories.Man[item] === 0 ? "hidden" : ""}`}
                                 onClick={() => setFilter({ ...filter, sex: 'man,unisex', category: [item.toString()] })}>
                                 <p
-                                    className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
+                                    className="cursor-pointer flex items-center gap-[1em] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px] border-t-[1px] pt-1"
                                 >{item}
                                     <span
                                         className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"

@@ -5,7 +5,7 @@ import Filter from "@/shared/components/Filter/Filter";
 
 export default async function CatalogPage() {
     const colors = await getColors()
-    const categories = await getProductsBySection() 
+    const categories = await getProductsBySection()
 
     return (
         <main className="container mt-[38px] md:mt-[62px] lg:mt-[75px] xl:mt-[100px]">
@@ -18,8 +18,6 @@ export default async function CatalogPage() {
                         <Catalog colors={colors} categories={categories} />
                     </div>
                 </section>
-
-
             </CatalogProvider>
         </main>
     )
