@@ -76,7 +76,7 @@ export default function MyMePage() {
                         onChange={(e) => setPhone(e.target.value)}
                     />
                 </div>
-                {!user?.phone_number && <div className="">
+                {/* {!user?.phone_number && <div className="">
                     <h5 className="uppercase text-black font-[700] text-[19px] xl:text-[12px] 2xl:text-[16px]">Подтверждение номера телефона</h5>
                     <p className="text-[#5E5E5E] text-[13px]">На ваш номер отправлено СМС с кодом проверки. Введите код в поле ниже.</p>
                     <div className="flex items-stretch gap-[5px]">
@@ -89,7 +89,7 @@ export default function MyMePage() {
                         />
                         <button className="bg-primary text-white uppercase text-center w-1/3 ">Подтвердить</button>
                     </div>
-                </div>}
+                </div>} */}
             </div>
             <div className="w-full xl:w-2/3 flex gap-[46px] flex-col xl:flex-row">
                 <div className="w-full xl:w-1/2 flex flex-col gap-[12px]">

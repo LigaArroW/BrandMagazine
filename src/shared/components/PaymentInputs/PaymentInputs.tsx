@@ -71,7 +71,7 @@ const PaymentInputs = () => {
                     onChange={(e) => setTempUser({ ...tempUser, phone_number: e.target.value } as TempUser)}
                 />
             </div>
-            {user && user.phone_number === null && <div className="flex flex-col gap-5 xl:gap-3 2xl:gap-4">
+            {/* {user && user.phone_number === null && <div className="flex flex-col gap-5 xl:gap-3 2xl:gap-4">
                 <h5 className="uppercase text-black font-[700] text-base  xl:text-xs 2xl:text-base">
                     Подтверждение номера телефона
                 </h5>
@@ -81,7 +81,7 @@ const PaymentInputs = () => {
                     <button type="button" className="w-2/5 uppercase bg-primary text-white" onClick={handleConfirmPhone}>подтвердить</button>
                 </div>
 
-            </div>}
+            </div>} */}
 
             <div className="flex flex-col gap-5 xl:gap-3 2xl:gap-4">
                 <h5 className="uppercase text-black font-[700] text-base  xl:text-xs 2xl:text-base">
