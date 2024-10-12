@@ -34,7 +34,7 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
             skipNull: true,
         });
         const productsData = await getProducts(qu);
-        
+
         if (!productsData) return
         setProducts(productsData);
         if (productsData.max_product_price && productsData.min_product_price) {
@@ -50,6 +50,9 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
         loadProducts();
 
     }, [filter]);
+
+    console.log(filter.ordering);
+
 
     return (
         <>
@@ -160,6 +163,11 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
                                     if (filter.ordering.startsWith('-')) {
                                         setFilter({ ...filter, ordering: filter.ordering.slice(1) as IOrdering })
                                     } else {
+                                        if (filter.ordering.length === 1 || filter.ordering.length === 0) {
+                                            setFilter({ ...filter, ordering: '-' + 'created_at' as IOrdering })
+                                            setIsSortOpen(false)
+                                            return
+                                        }
                                         setFilter({ ...filter, ordering: '-' + filter.ordering as IOrdering })
                                     }
                                     setIsSortOpen(false)
