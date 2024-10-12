@@ -1,0 +1,39 @@
+.OurAdvantage {
+   --gap: 20px;
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+   gap: var(--gap);
+
+   &__text {
+      align-items: center;
+      color: var(--heavy-gray);
+      display: flex;
+      flex-direction: column;
+      font-family: AlibabaPuhuiti, sans-serif;
+      gap: var(--gap);
+      text-align: center;
+   }
+
+   &__title {
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      max-width: 16em;
+
+      @media only screen and (max-width: 767px) {
+         font-size: 18px;
+      }
+      @media only screen and (max-width: 530px) {
+         font-size: 12px;
+      }
+   }
+
+   &__desc {
+      font-size: 15px;
+      @media only screen and (max-width: 530px) {
+         font-size: 12px;
+         line-height: 1.8em;
+      }
+   }
+}

@@ -10,6 +10,7 @@ import { BrandImages } from "@/shared/ui/brandImages/BrandImages";
 import /* IconMain, */ { EIcon } from "@/shared/components/IconMain/IconMain";
 import { OurAdvantages } from "@/widgets/OurAdvantages/OurAdvantages";
 import { CTABlock } from "@/widgets/CTABlock/CTABlock";
+import { Advantages } from "@/widgets/Advantages/Advantages";
 
 export default function Home() {
 
@@ -76,44 +77,9 @@ export default function Home() {
         </div>
 
       </div>
-      <div className="px-[18%] bg-letter pt-[45px]">
 
-        <h4 className="text-center page__titles">наши преимущества</h4>
+      <Advantages />
 
-        <div className="flex flex-col gap-[44px] items-center justify-center">
-          <div className="grid items-start lg:grid-cols-4 lg:grid-rows-2 gap-[44px] grid-cols-2 grid-rows-4">
-            <OurAdvantages iconName={EIcon.Confidition} text="Гарантии конфиденциальности" />
-            <OurAdvantages iconName={EIcon.Assortiment} text="Самый широкий ассортимент" />
-            <OurAdvantages iconName={EIcon.Delivery} text="Доставка в день заказа при наличии на складе" />
-            <OurAdvantages iconName={EIcon.Economy} text="Экономия денег" />
-            <OurAdvantages iconName={EIcon.OriginalMaterials} text="Оригинальные материалы" />
-            <OurAdvantages iconName={EIcon.FullButik} text="Полный комплект бутика" />
-            <OurAdvantages iconName={EIcon.UsStar} text="Нас выбирают звезды" />
-            <OurAdvantages iconName={EIcon.ControlQuantity} text="Контроль качества" />
-          </div>
-          <div className="grid items-start lg:grid-cols-4 lg:grid-rows-1 gap-[44px] grid-cols-1 md:grid-rows-2 md:grid-cols-2 ">
-            <OurAdvantages iconName={EIcon.MirrowReplica} text="ЗЕРКАЛЬНЫЕ РЕПЛИКИ" nowrap desc="В нашем интернет магазине Вы
-                приобретаете не подделки, а высокоточные
-                копии известных брендов. Больше не нужно
-                переплачивать за имя бренда.Все наши
-                товары изготавливаются из натуральных
-                материалов с применением оригинальных
-                технологий и проходят контроль качества." />
-            <OurAdvantages iconName={EIcon.BigAssortion} text="БОЛЬШОЙ АССОРТИМЕНТ" nowrap
-              desc="Мы следим за миром моды, поэтому в наших
-                каталогах представлены только актуальные
-                модели сумок и аксессуаров. Наш каталог дополняется каждый день."/>
-            <OurAdvantages iconName={EIcon.DeliveryGold} text="ДОСТАВКА"
-              desc="Есть возможность заказать на выбор несколько цветов
-                и фасонов."/>
-            <OurAdvantages iconName={EIcon.Payment} text="ОПЛАТА И ВОЗВРАТ" nowrap
-              desc="Оплатить покупки можно наличными курьеру
-                или переводом на карты Сберб, Альфа
-                банк, Т-Банк. Если вещи не подошли -
-                оплачивается только стоимость доставки." />
-          </div>
-        </div>
-      </div>
       <CTABlock />
 
     </div>
