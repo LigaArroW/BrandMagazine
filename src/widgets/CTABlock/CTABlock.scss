@@ -1,0 +1,117 @@
+.CTABlock {
+    padding-inline: 18%;
+    padding-top: 80px;
+
+    @media only screen and (max-width: 1840px) {
+        padding-top: 60px;
+    }
+    @media only screen and (max-width: 1680px) {
+        padding-top: 30px;
+    }
+    @media only screen and (max-width: 767px) {
+        padding-inline: initial;
+    }
+
+    &__header {
+        color: var(--heavy-gray);
+        display: flex;
+        flex-direction: column;
+        font-weight: 500;
+        gap: 1.25rem;
+        white-space: nowrap;
+        text-transform: uppercase;
+
+        @media only screen and (max-width: 1460px) {
+            align-items: center;
+            white-space: initial;
+            padding-inline: 1rem;
+            text-align: center;
+        }
+        @media only screen and (max-width: 1460px) {
+            padding-inline: 1rem;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            @media only screen and (max-width: 1680px) {
+                font-size: 26px;
+            }
+            @media only screen and (max-width: 1460px) {
+                text-align: inherit;
+            }
+
+            &+p {
+                font-size: 20px;
+                text-align: right;
+                @media only screen and (max-width: 1680px) {
+                    font-size: 18px;
+                }
+                @media only screen and (max-width: 1460px) {
+                    text-align: inherit;
+                }
+            }
+        }
+    }
+
+    &__container {
+        align-items: flex-end;
+        background-image: url('/img/persones.png');
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        min-height: 528px;
+        padding-top: 4rem;
+
+        @media only screen and (max-width: 1840px) {
+            background-size: 560px;
+            min-height: 440px;
+            padding-top: 3rem;
+        }
+        @media only screen and (max-width: 1680px) {
+            background-size: 420px;
+            min-height: 320px;
+            padding-top: 1rem;
+            gap: 2rem;
+        }
+        @media only screen and (max-width: 1460px) {
+            align-items: center;
+            background-position: center bottom;
+            background-size: 420px;
+            padding-bottom: 350px;
+            padding-inline: initial;
+        }
+        @media only screen and (max-width: 530px) {
+            background: none;
+            padding-bottom: 65px;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        @media only screen and (max-width: 1680px) {
+            gap: 1.5rem;
+        }
+        @media only screen and (max-width: 1460px) {
+            padding-inline: 1rem;
+        }
+    }
+}
+
+.ActionButton {
+    background-color: var(--primary-color);
+    color: var(--white);
+    display: block;
+    padding: 1em 1.75em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color .15s;
+
+    &:hover {
+        background-color: #d1ba9f;
+    }
+}

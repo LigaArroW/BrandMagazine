@@ -206,8 +206,8 @@ textarea {
     uppercase;
   }
   .bg-letter {
-    background: #fff url("/bg.png") repeat;
-    background-size: cover;
+    background: #fff url("/bg.jpg") repeat;
+    background-size: contain;
   }
   .active-page {
     @apply text-primary;

@@ -9,6 +9,7 @@ import { BrandImages } from "@/shared/ui/brandImages/BrandImages";
 // import { Icon } from "@/shared/ui/icon";
 import /* IconMain, */ { EIcon } from "@/shared/components/IconMain/IconMain";
 import { OurAdvantages } from "@/widgets/OurAdvantages/OurAdvantages";
+import { CTABlock } from "@/widgets/CTABlock/CTABlock";
 
 export default function Home() {
 
@@ -113,15 +114,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="px-[18%] py-[36px] bg-letter">
-        <h4 className="uppercase text-center font-[600] mb-[32px] text-heavyGray text-[19px] md:text-[24px] 2xl:text-[32px]">Закажите онлайн прямо сейчас</h4>
-        <p className="font-AlibabaPuhuiti font-[400] text-heavyGray 2xl:text-[20px] xl:text-[15px] md:text-[14px]">
-          Оформить заказ можно через корзину на сайте, через кнопочку заказать в один клик, по телефону
-          <a href="tel:+9032870813" className="text-black underline px-2 text-nowrap">+7 903 287-08-13</a>
-          или написать нам в
-          <a href="https://wa.me/79032870813" className="text-black underline px-2 text-nowrap">WhatsApp</a>
-        </p>
-      </div>
+      <CTABlock />
 
     </div>
 
