@@ -1,17 +1,15 @@
 'use client';
-
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCatalogContext } from "../Contex/CatalogProvider";
 import { Icon } from "@/shared/ui/icon";
-import { Range } from "react-range";
-import { getCategory, getProductsBySection } from "@/lib/catalog/catalogAction";
+// import { Range } from "react-range";
+// import { getCategory, getProductsBySection } from "@/lib/catalog/catalogAction";
 import { IGetProductsBySection } from "@/types/product";
 
 interface IFilter {
     colors: string[];
     categories: IGetProductsBySection
 }
-
 
 const Filter: React.FC<IFilter> = ({ colors, categories }) => {
     const { filter, setFilter, resetFilter, price } = useCatalogContext();
@@ -33,8 +31,6 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
         const sum = Object.values(obj).reduce((acc, current) => acc + current, 0);
         return new Intl.NumberFormat().format(sum);
     }
-
-
 
     return (
         <div className="flex flex-col gap-[60px]">

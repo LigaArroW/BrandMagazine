@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMainContext } from "../Contex/MainProvider";
 import { Icon } from "@/shared/ui/icon";
 import { useRouter } from "next/navigation";
@@ -37,7 +37,6 @@ const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id, product }) => {
         //     quantity: quantity,
         //     color: product.color,
         // }])
-
 
     }
 

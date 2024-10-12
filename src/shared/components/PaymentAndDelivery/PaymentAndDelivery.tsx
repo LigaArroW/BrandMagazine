@@ -1,4 +1,3 @@
-
 const PaymentAndDelivery = () => {
     return (
         <div className="flex flex-col xl:flex-row gap-8 md:gap-[25px] xl:gap-5 mb-[30px]  border-b-4 border-dotted border-[#C9C9C9] pb-[25px] lg:pb-[41px] xl:mb-[56px] md:mb-[41px] 2xl:pb-[56px] 2xl:mb-[75px]">
