@@ -2,9 +2,9 @@
 import { Logo } from "@/shared/ui/logo";
 import { CatalogLink, MenuLink } from "../Header/consts";
 import Link from "next/link";
-import "./Footer.scss"
 import { PolitishLink } from "./consts";
 import { ToTopButton } from "./ToTopButton";
+import "./Footer.scss"
 
 export const Footer = () => {
 
