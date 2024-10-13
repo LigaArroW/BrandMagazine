@@ -51,9 +51,6 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
 
     }, [filter]);
 
-    console.log(filter.ordering);
-
-
     return (
         <>
             <div className="flex flex-col gap-[19px]">
@@ -65,7 +62,7 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
                     </Link >
                     <span className="text-black"> / Каталог</span>
                 </p >
-                <h4 className="title font-[400] text-black">Каталог</h4>11
+                <h4 className="title font-[400] text-black">Каталог</h4>
                 <div className="flex justify-between items-end mb-[30px]">
                     <div className="cursor-pointer flex gap-[9px] items-center xl:hidden" onClick={() => setIsModal(true)}>
                         <IconMain name={EIcon.Filter} style="size-[17px]" />
