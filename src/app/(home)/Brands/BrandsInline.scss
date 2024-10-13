@@ -5,10 +5,12 @@
    gap: 22px;
    justify-content: space-between;
    margin-top: 75px;
+   max-width: 1680px;
+   min-width: 1580px;
    overflow-x: hidden;
    overflow-y: visible;
    padding-bottom: 12px;
-   min-width: 1580px;
+   margin-inline: auto;
 
    picture {
       position: relative;

@@ -5,25 +5,34 @@ import IconLink from "../IconLink/IconLink";
 import { useCartCount } from "./useCartCount";
 import { CartLink, CatalogLink, FavoriteLink, MenuLink, ProfileLink } from "./consts";
 import "./Header.scss";
+import { useState } from "react";
 
 export default function Header({light = false}: any) {
 
    const { cartCount } = useCartCount()
+   const [showBurger, setShowBurger] = useState(false)
    // const { favoriteCount } = useFavoriteCount()
    const favoriteCount = 0
 
-   const stroke = light ? "black" : "white"
+   const stroke = light || showBurger ? "black" : "white"
 
    let cssClass = "Header container"
 
-   if (light)
+   if (light || showBurger)
       cssClass += " Header_light"
+   
+   if (showBurger)
+      cssClass += " Header_show-burger"
+
+   const toggleBurger = () => {
+      setShowBurger((e) => !e)
+   }
 
    return (
       <header className={cssClass}>
          <div className="row">
             <Logo />
-            <nav className="Header__nav">
+            <nav className="Header__nav row">
                <ul className="Header__nav-list">
                   {MenuLink.map((item, index) => (
                      <li key={index}>
@@ -57,6 +66,10 @@ export default function Header({light = false}: any) {
             <Link href={ProfileLink}>
                Профиль
             </Link>
+            <button
+               className={`burger ${showBurger ? ' burger_close' : ''}`}
+               onClick={toggleBurger}
+            />
          </div>
       </header>
 

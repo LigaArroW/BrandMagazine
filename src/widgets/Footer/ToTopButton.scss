@@ -1,0 +1,16 @@
+.ToTopButton {
+   background-color: var(--primary-color);
+   background-image: url('/icon/chevron.svg');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 18px;
+   border-radius: 50%;
+   cursor: pointer;
+   height: 64px;
+   width: 64px;
+
+   @media only screen and (max-width: 1680px) {
+      height: 48px;
+      width: 48px;
+   }
+}
