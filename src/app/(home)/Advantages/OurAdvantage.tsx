@@ -21,7 +21,7 @@ export const OurAdvantage: React.FC<IOurAdvantages> = ({
 
     return (
         <div className={cssClass}>
-            <IconMain name={iconName} />
+            <IconMain name={iconName} style="size-[110px]"/>
             <div className="OurAdvantage__text">
                 <div className="OurAdvantage__title">
                     {text}

@@ -11,6 +11,8 @@
   --black: #000000;
   --middle-gray: #6d757e;
   --light-gray: #d9dfe5;
+  --main-font: AlibabaPuhuiti, arial, sans-serif;
+  --accent-font: Atyptext, arial, sans-serif;
 }
 
 body {
@@ -96,7 +98,7 @@ textarea {
 @layer base {
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/fonts/ALIBABAPUHUITI-2-105-HEAVY.OTF) format("opentype");
+    src: url(/fonts/AlibabaPuhuiti/ALIBABAPUHUITI-2-105-HEAVY.OTF) format("opentype");
     font-display: swap;
     font-weight: 900;
     font-style: normal;
@@ -104,7 +106,7 @@ textarea {
 
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/fonts/ALIBABAPUHUITI-2-65-MEDIUM.TTF) format("truetype");
+    src: url(/fonts/AlibabaPuhuiti/ALIBABAPUHUITI-2-65-MEDIUM.TTF) format("truetype");
     font-display: swap;
     font-weight: 400;
     font-style: normal;
@@ -112,14 +114,14 @@ textarea {
 
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/fonts/ALIBABAPUHUITI-2-105-LIGHT.OTF) format("opentype");
+    src: url(/fonts/AlibabaPuhuiti/ALIBABAPUHUITI-2-105-LIGHT.OTF) format("opentype");
     font-display: swap;
     font-weight: 300;
     font-style: normal;
   }
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/fonts/ALIBABAPUHUITI-2-55-REGULAR.OTF) format("opentype");
+    src: url(/fonts/AlibabaPuhuiti/ALIBABAPUHUITI-2-55-REGULAR.OTF) format("opentype");
     font-display: swap;
     font-weight: 400;
     font-style: normal;
@@ -127,7 +129,7 @@ textarea {
 
   @font-face {
     font-family: AlibabaPuhuiti;
-    src: url(/fonts/ALIBABAPUHUITI-2-85-BOLD.OTF) format("opentype");
+    src: url(/fonts/AlibabaPuhuiti/ALIBABAPUHUITI-2-85-BOLD.OTF) format("opentype");
     font-display: swap;
     font-weight: 600;
     font-style: normal;
@@ -135,7 +137,7 @@ textarea {
 
   @font-face {
     font-family: Atyptext;
-    src: url(/fonts/ATYPTEXT-MEDIUM.TTF) format("ttf");
+    src: url(/fonts/Atyptext/ATYPTEXT-MEDIUM.TTF) format("ttf");
     font-display: swap;
     font-weight: 500;
     font-style: normal;
@@ -143,7 +145,7 @@ textarea {
 
   @font-face {
     font-family: Atyptext;
-    src: url(/fonts/ATYPTEXT-REGULAR.TTF) format("ttf");
+    src: url(/fonts/Atyptext/ATYPTEXT-REGULAR.TTF) format("ttf");
     font-display: swap;
     font-weight: 400;
     font-style: normal;
@@ -151,7 +153,7 @@ textarea {
 
   @font-face {
     font-family: Atyptext;
-    src: url(/fonts/ATYPTEXT-SEMIBOLD.TTF) format("ttf");
+    src: url(/fonts/Atyptext/ATYPTEXT-SEMIBOLD.TTF) format("ttf");
     font-display: swap;
     font-weight: 600;
     font-style: normal;
@@ -159,7 +161,7 @@ textarea {
 
   @font-face {
     font-family: Atyptext;
-    src: url(/fonts/ATYPTEXT-THINITALIC.TTF) format("ttf");
+    src: url(/fonts/Atyptext/ATYPTEXT-THINITALIC.TTF) format("ttf");
     font-display: swap;
     font-weight: 300;
     font-style: normal;
@@ -174,14 +176,16 @@ textarea {
   .page__titles {
     @apply font-bold
      text-[22px]
-     leading-[20px] 
-     uppercase 
-     text-tertiary 
-     mb-[25px] 
+     leading-[20px]
+     uppercase
+     text-tertiary
+     mb-[25px]
      2xl:text-[32px] 2xl:leading-[26px] 2xl:my-1920
      xl:text-[24px] xl:my-1440
      lg:my-768
      md:text-[21px] md:my-428;
+     color: var(--heavy-gray);
+     font-weight: 600;
   }
   .spinner {
     width: 30px;

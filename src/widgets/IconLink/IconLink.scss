@@ -1,0 +1,20 @@
+.IconLink {
+   position: relative;
+
+   &__label {
+      align-items: center;
+      background-color: var(--secondary-color);
+      border-radius: 50%;
+      color: var(--white);
+      display: flex;
+      font-size: 12px;
+      height: 20px;
+      justify-content: center;
+      position: absolute;
+      right: -12px;
+      text-align: center;
+      top: -12px;
+      width: 20px;
+      font-weight: 600;
+   }
+}

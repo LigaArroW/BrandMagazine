@@ -1,12 +1,13 @@
 .CTABlock {
-    padding-inline: 18%;
-    padding-top: 80px;
+    background-color: var(--white);
+    padding-inline: 14.5vw;
+    padding-top: 12px;
 
     @media only screen and (max-width: 1840px) {
-        padding-top: 60px;
+        // padding-top: 60px;
     }
     @media only screen and (max-width: 1680px) {
-        padding-top: 30px;
+        // padding-top: 30px;
     }
     @media only screen and (max-width: 767px) {
         padding-inline: initial;
@@ -17,7 +18,7 @@
         display: flex;
         flex-direction: column;
         font-weight: 500;
-        gap: 1.25rem;
+        gap: 38px;
         white-space: nowrap;
         text-transform: uppercase;
 
@@ -42,7 +43,7 @@
             }
 
             &+p {
-                font-size: 20px;
+                font-size: 24px;
                 text-align: right;
                 @media only screen and (max-width: 1680px) {
                     font-size: 18px;
@@ -57,13 +58,13 @@
     &__container {
         align-items: flex-end;
         background-image: url('/img/persones.png');
-        background-position: left bottom;
+        background-position: left 4.5vw bottom;
         background-repeat: no-repeat;
         display: flex;
         flex-direction: column;
-        gap: 2.5rem;
+        gap: 46px;
         min-height: 528px;
-        padding-top: 4rem;
+        padding-top: 30px;
 
         @media only screen and (max-width: 1840px) {
             background-size: 560px;
@@ -92,7 +93,7 @@
     &__actions {
         display: flex;
         flex-direction: column;
-        gap: 2.5rem;
+        gap: 52px;
         @media only screen and (max-width: 1680px) {
             gap: 1.5rem;
         }
@@ -106,7 +107,8 @@
     background-color: var(--primary-color);
     color: var(--white);
     display: block;
-    padding: 1em 1.75em;
+    font-size: 20px;
+    padding: .6em 2em;
     text-align: center;
     text-transform: uppercase;
     transition: background-color .15s;

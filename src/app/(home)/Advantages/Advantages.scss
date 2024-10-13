@@ -35,8 +35,8 @@
    background-size: contain;
    margin-top: 40px;
    padding-bottom: 60px;
-   padding-inline: 3vw;
-   padding-top: 80px;
+   padding-inline: 6.4vw;
+   padding-top: 36px;
 
    @media only screen and (max-width: 767px) {
       padding-bottom: 30px;
@@ -45,7 +45,7 @@
 
    .page__titles {
       margin-top: 0;
-      margin-bottom: 65px;
+      margin-bottom: 50px;
    }
 
    &__list {
@@ -55,7 +55,7 @@
       > div {
          border-left: 1px solid #bbb;
          border-top: 1px solid #bbb;
-         padding: 2rem;
+         padding: 1.5rem;
          @media only screen and (max-width: 767px) {
             padding: 1.25rem .5rem;
          }

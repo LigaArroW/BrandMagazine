@@ -1,16 +1,12 @@
 'use client'
 import Image from "next/image";
-import Bag from '../../public/home/bag-1-check.png'
-import Eye from '../../public/home/bag-2-check.png'
+import Bag from '../../../public/home/bag-1-check.png'
+import Eye from '../../../public/home/bag-2-check.png'
 
 import Link from "next/link";
-// import { useEffect, useState } from "react";
 import { BrandImages } from "@/shared/ui/brandImages/BrandImages";
-// import { Icon } from "@/shared/ui/icon";
-import /* IconMain, */ { EIcon } from "@/shared/components/IconMain/IconMain";
-import { OurAdvantages } from "@/widgets/OurAdvantages/OurAdvantages";
-import { CTABlock } from "@/widgets/CTABlock/CTABlock";
-import { Advantages } from "@/widgets/Advantages/Advantages";
+import { CTABlock } from "@/app/(home)/CTABlock/CTABlock";
+import { Advantages } from "@/app/(home)/Advantages/Advantages";
 
 export default function Home() {
 

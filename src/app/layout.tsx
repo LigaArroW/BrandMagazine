@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.scss";
 import { Providers } from "./providers";
-import { Header } from "@/widgets/Header";
 import { Footer } from "@/widgets/Footer";
 import MainProvider from "@/shared/components/Contex/MainProvider";
+import HeaderWrapper from "@/widgets/HeaderWrapper/HeaderWrapper";
+import "./globals.scss";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Replik Store",
@@ -20,12 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={inter.className + (" flex flex-col min-h-screen")}>
+      <body className={"flex flex-col min-h-screen"}>
         <Providers>
           <MainProvider>
-            <div id="modal-portal" >
-              <Header />
-              {children}
+            <div id="modal-portal">
+              <HeaderWrapper />
+              <main>{children}</main>
               <Footer />
             </div>
           </MainProvider>

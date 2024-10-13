@@ -6,7 +6,9 @@ export const Advantages = () => {
 
     return (
         <div className="Advantages">
-            <h4 className="text-center page__titles">Наши преимущества</h4>
+            <h2 className="text-center page__titles">
+               Наши преимущества
+            </h2>
             <div className="Advantages__list">
                {[
                   ...advantagesList,
