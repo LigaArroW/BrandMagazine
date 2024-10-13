@@ -33,6 +33,10 @@
       @media only screen and (max-width: 740px) {
          grid-template-columns: 1fr 1fr min(152px, 30vw);
       }
+      @media only screen and (max-width: 375px) {
+         display: flex;
+         gap: 9vw;
+      }
    }
 
    &__logo {
@@ -54,6 +58,9 @@
          grid-row-start: 1;
          grid-row-end: 3;
       }
+      @media only screen and (max-width: 375px) {
+         display: none;
+      }
    }
 
    &__nav-list {
@@ -68,21 +75,24 @@
       @media only screen and (max-width: 1460px) {
          font-size: 16px;
       }
+      @media only screen and (max-width: 375px) {
+         padding-right: 4vw;
+      }
 
       a + ul {
-         margin-top: 1.25em;
+         margin-top: .75em;
       }
 
       ul {
          display: flex;
          flex-direction: column;
          font-size: 16px;
-         gap: .25em;
+         gap: .5em;
 
          @media only screen and (max-width: 1460px) {
             font-size: 15px;
          }
-         @media only screen and (max-width: 1460px) {
+         @media only screen and (max-width: 1120px) {
             font-size: 13px;
          }
       }
