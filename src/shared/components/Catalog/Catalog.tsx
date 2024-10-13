@@ -132,6 +132,13 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
                             </li>
                             <li
                                 className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9] 
+                                ${filter.ordering.includes('total_order_count') && "underline underline-offset-4"}
+                                `}
+                                onClick={() => { setFilter({ ...filter, ordering: 'price', offset: null }), setIsSortOpen(false) }}
+                            >По цене
+                            </li>
+                            <li
+                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9] 
                                 ${filter.ordering.includes('created_at') && "underline underline-offset-4"}
                                 `}
                                 onClick={() => { setFilter({ ...filter, ordering: 'created_at', offset: null }), setIsSortOpen(false) }}
