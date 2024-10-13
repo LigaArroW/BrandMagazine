@@ -4,7 +4,7 @@ import { Advantages } from "@/app/(home)/Advantages/Advantages";
 import SiteLabel from "./SiteLabel/SiteLabel";
 import PromoBanner from "./PromoBanner/PromoBanner";
 import Brands from "./Brands/Brands";
-import Header from "@/widgets/Header/Header";
+import Header from "@/widgets/Header/header";
 
 export default function Home() {
 
