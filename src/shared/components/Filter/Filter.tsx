@@ -1,10 +1,12 @@
 'use client';
 import { useEffect, useState } from "react";
-import { useCatalogContext } from "../Contex/CatalogProvider";
+import { ISex, useCatalogContext } from "../Contex/CatalogProvider";
 import { Icon } from "@/shared/ui/icon";
 // import { Range } from "react-range";
 // import { getCategory, getProductsBySection } from "@/lib/catalog/catalogAction";
 import { IGetProductsBySection } from "@/types/product";
+import queryString from "query-string";
+
 
 interface IFilter {
     colors: string[];
@@ -14,6 +16,22 @@ interface IFilter {
 const Filter: React.FC<IFilter> = ({ colors, categories }) => {
     const { filter, setFilter, resetFilter, price } = useCatalogContext();
     const [statePrice, setStatePrice] = useState({ min: price.min, max: price.max });
+    // const quer = window.location.search
+    // console.log("🚀 ~ quer:", quer)
+    const [sex, setSex] = useState(filter.sex || '');
+
+    useEffect(() => {
+        if (window.location.search) {
+            const qu = queryString.parse(window.location.search.slice(1));
+            if (qu.sex) {
+                setFilter({ ...filter, sex: qu.sex as ISex });
+            }
+
+
+            // setFilter(JSON.parse(window.location.search.slice(1)))
+        };
+    }, []);
+
     const [isMaleOpen, setIsMaleOpen] = useState(false);
     const [isFemaleOpen, setIsFemaleOpen] = useState(false);
 
@@ -21,10 +39,17 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
         setStatePrice({ min: price.min, max: price.max });
     }, [price]);
 
-    useEffect(() => {
-        if (!isMaleOpen) setFilter({ ...filter, sex: "" });
-        if (!isFemaleOpen) setFilter({ ...filter, sex: "" });
-    }, [isMaleOpen, isFemaleOpen]);
+    // useEffect(() => {
+    //     if (isFemaleOpen) return setFilter({ ...filter, sex: "woman,unisex", category: [] });
+    //     if (!isFemaleOpen) return setFilter({ ...filter, sex: "", category: [] });
+    // }, [isFemaleOpen]);
+
+    // useEffect(() => {
+    //     if (isMaleOpen) return setFilter({ ...filter, sex: "man,unisex", category: [] });
+    //     if (!isMaleOpen) return setFilter({ ...filter, sex: "", category: [] });
+    // }, [isMaleOpen]);
+
+
 
 
     const summ = (obj: { [key: string]: number }) => {
@@ -39,23 +64,31 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                 <div className="w-full py-[13px] relative border-b-2 border-[#C9C9C9] border-dotted">
                     <Icon
                         src="/icon/arrow-up.svg"
-                        onClick={() => setIsFemaleOpen(!isFemaleOpen)}
+                        // onClick={() => setIsFemaleOpen(!isFemaleOpen)}
                         fill="black"
-                        className={`w-[20px] h-[20px] cursor-pointer absolute right-0 top-[16px] ${isFemaleOpen ? "" : "rotate-180"}`}
+                        className={`w-[20px] h-[20px] cursor-pointer absolute right-0 top-[16px] ${filter.sex === "woman,unisex" ? "" : "rotate-180"}`}
                     />
                     <p
                         className="cursor-pointer flex items-center gap-[28px] font-[400] text-[15px] text-heavyGray 2xl:text-[20px] lg:text-[16px] mb:text-[26px]"
-                        onClick={() => setIsFemaleOpen(!isFemaleOpen)}
+                        // onClick={() => setIsFemaleOpen(!isFemaleOpen)}
+                        onClick={() => {
+                            if (filter.sex === "woman,unisex") {
+                                return setFilter({ ...filter, sex: "", category: [] })
+                            } else {
+                                return setFilter({ ...filter, sex: "woman,unisex", category: [] })
+                            }
+                        }
+                        }
                     >Женское
                         <span
                             className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
                         >{summ(categories.Woman)}</span>
                     </p>
-                    {isFemaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
+                    {filter.sex === "woman,unisex" && <ul className="mt-[12px] flex flex-col gap-1">
                         {Object.keys(categories.Woman).map((item, index) => (
                             <li key={item}
                                 className={`${categories.Woman[item] === 0 ? "hidden" : ""}`}
-                                onClick={() => setFilter({ ...filter, sex: 'woman,unisex', category: [item.toString()] })}>
+                                onClick={() => setFilter({ ...filter, category: [item.toString()] })}>
                                 <p
                                     className="cursor-pointer flex items-center gap-[1em] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px] border-t-[1px] pt-1"
                                 >{item}
@@ -66,27 +99,54 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                             </li>
                         ))}
                     </ul>}
+                    {/* {isFemaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
+                        {Object.keys(categories.Woman).map((item, index) => (
+                            <li key={item}
+                                className={`${categories.Woman[item] === 0 ? "hidden" : ""}`}
+                                onClick={() => setFilter({ ...filter, category: [item.toString()] })}>
+                                <p
+                                    className="cursor-pointer flex items-center gap-[1em] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px] border-t-[1px] pt-1"
+                                >{item}
+                                    <span
+                                        className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
+                                    >{categories.Woman[item]}</span>
+                                </p>
+                            </li>
+                        ))}
+                    </ul>} */}
                 </div>
+
+
+
                 <div className="w-full py-[13px] relative border-b-2 border-[#C9C9C9] border-dotted">
                     <Icon
                         src="/icon/arrow-up.svg"
-                        onClick={() => setIsMaleOpen(!isMaleOpen)}
+                        // onClick={() => setIsMaleOpen(!isMaleOpen)}
+                        // onClick={() => { setFilter({ ...filter, sex: "man,unisex" }), setIsMaleOpen(!isMaleOpen) }}
                         fill="black"
-                        className={`w-[20px] h-[20px] cursor-pointer absolute right-0 top-[16px] ${isMaleOpen ? "" : "rotate-180"}`}
+                        className={`w-[20px] h-[20px] cursor-pointer absolute right-0 top-[16px] ${filter.sex === "man,unisex" ? "" : "rotate-180"}`}
                     />
                     <p
                         className="cursor-pointer flex items-center gap-[28px] font-[400] text-[15px] text-heavyGray 2xl:text-[20px] lg:text-[16px] mb:text-[26px]"
-                        onClick={() => setIsMaleOpen(!isMaleOpen)}
+                        // onClick={() => setIsMaleOpen(!isMaleOpen)}
+                        onClick={() => {
+                            if (filter.sex === "man,unisex") {
+                                return setFilter({ ...filter, sex: "", category: [] })
+                            } else {
+                                return setFilter({ ...filter, sex: "man,unisex", category: [] })
+                            }
+                        }}
                     >Мужское
                         <span
                             className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
                         >{summ(categories.Man)}</span>
                     </p>
-                    {isMaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
+                    {filter.sex === "man,unisex" && <ul className="mt-[12px] flex flex-col gap-1">
                         {Object.keys(categories.Man).map((item, index) => (
                             <li key={item}
                                 className={`${categories.Man[item] === 0 ? "hidden" : ""}`}
-                                onClick={() => setFilter({ ...filter, sex: 'man,unisex', category: [item.toString()] })}>
+                                // onClick={() => setFilter({ ...filter, sex: 'man,unisex', category: [item.toString()] })}>
+                                onClick={() => setFilter({ ...filter, category: [item.toString()] })}>
                                 <p
                                     className="cursor-pointer flex items-center gap-[1em] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px] border-t-[1px] pt-1"
                                 >{item}
@@ -96,25 +156,26 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                                 </p>
                             </li>
                         ))}
-                        {/* <li>
-                            <p
-                                className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
-                            >Сумки
-                                <span
-                                    className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
-                                >5511</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p
-                                className="cursor-pointer flex items-center gap-[28px] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px]"
-                            >Аксессуары
-                                <span
-                                    className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
-                                >5511</span>
-                            </p>
-                        </li> */}
+
                     </ul>}
+                    {/* {isMaleOpen && <ul className="mt-[12px] flex flex-col gap-1">
+                        {Object.keys(categories.Man).map((item, index) => (
+                            <li key={item}
+                                className={`${categories.Man[item] === 0 ? "hidden" : ""}`}
+                                // onClick={() => setFilter({ ...filter, sex: 'man,unisex', category: [item.toString()] })}>
+                                onClick={() => setFilter({ ...filter, category: [item.toString()] })}>
+                                <p
+                                    className="cursor-pointer flex items-center gap-[1em] font-[400] text-[14px] text-heavyGray 2xl:text-[14px] lg:text-[14px] mb:text-[20px] border-t-[1px] pt-1"
+                                >{item}
+                                    <span
+                                        className="font-[900] text-secondary text-[10px]  xl:text-[15px] lg:text-[11px] md:text-[19px]"
+                                    >{categories.Man[item]}</span>
+                                </p>
+                            </li>
+                        ))}
+
+                    </ul>} */}
+
                 </div>
             </div>
             <div className="w-full">
@@ -131,7 +192,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                         type="text"
                         value={filter.brand}
                         placeholder="Искать бренд"
-                        onChange={(e) => setFilter({ ...filter, offset: null, brand: e.target.value.toLowerCase() })}
+                        onChange={(e) => setFilter({ ...filter, offset: null, brand: e.target.value })}
                         className="w-full h-full bg-[#D9D9D9] pl-12 placeholder:absolute placeholder:left-12 placeholder:top-1/2 placeholder:-translate-y-1/2  placeholder:text-heavyGray placeholder:font-[400] placeholder:leading-[10px]"
                     />
                 </label>

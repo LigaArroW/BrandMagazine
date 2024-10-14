@@ -8,7 +8,7 @@ export default function PromoBanner() {
    return (
       <div className="PromoBanner">
          <div className="PromoBanner__first row">
-            <Link href={CatalogLink} className="PromoBanner__megalink">
+            <Link href={CatalogLink + '?sex=woman,unisex'} className="PromoBanner__megalink">
                Сумки
                <u>В каталог</u>
             </Link>

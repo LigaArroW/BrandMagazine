@@ -18,7 +18,7 @@ import { createContext, useContext, useState } from "react";
 //     'none' = null
 // }
 export type IOrdering = 'created_at' | '-created_at' | 'price' | '-price' | 'total_order_count' | '-total_order_count' | '';
-type ISex = 'woman' | 'man' | 'unisex' | '';
+export type ISex = 'woman' | 'man' | 'unisex' | '';
 
 
 interface IFilter {
