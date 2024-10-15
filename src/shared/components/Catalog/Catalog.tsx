@@ -119,33 +119,33 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
                         </div>
 
                         <ul className={`absolute w-full px-[11px] top-10 bg-white z-10
-                        rounded-[4px] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] 
+                        rounded-[4px] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]
                         text-heavyGray text-nowrap
                         font-[400] text-[13px]  md:text-[13px] lg:text-[10px] xl:text-[13px]
                         ${isSortOpen ? "block" : "hidden"}`}>
                             <li
-                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9] 
+                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9]
                                 ${filter.ordering.includes('total_order_count') && "underline underline-offset-4"}
                                 `}
                                 onClick={() => { setFilter({ ...filter, ordering: 'total_order_count', offset: null }), setIsSortOpen(false) }}
                             >По популярности
                             </li>
                             <li
-                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9] 
+                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9]
                                 ${filter.ordering.includes('total_order_count') && "underline underline-offset-4"}
                                 `}
                                 onClick={() => { setFilter({ ...filter, ordering: 'price', offset: null }), setIsSortOpen(false) }}
                             >По цене
                             </li>
                             <li
-                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9] 
+                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9]
                                 ${filter.ordering.includes('created_at') && "underline underline-offset-4"}
                                 `}
                                 onClick={() => { setFilter({ ...filter, ordering: 'created_at', offset: null }), setIsSortOpen(false) }}
                             >По новизне
                             </li>
                             <li
-                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9] 
+                                className={`cursor-pointer py-[11px] border-b border-dashed border-[#C9C9C9]
                                 ${!filter.ordering.startsWith('-') && "underline underline-offset-4"}
                                 `}
                                 onClick={() => {
@@ -160,7 +160,7 @@ const Catalog: React.FC<ICatalog> = ({ colors, categories }) => {
                             </li>
 
                             <li
-                                className={`cursor-pointer py-[11px] 
+                                className={`cursor-pointer py-[11px]
                                     ${filter.ordering.startsWith('-') && "underline underline-offset-4"}
                                 `}
                                 onClick={() => {

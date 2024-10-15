@@ -11,7 +11,7 @@ export const FavoritesList = () => {
     const { accessToken } = useMainContext();
 
     const { filter, setFilter } = useCatalogContext();
-   
+
     const [favorites, setFavorites] = useState<any[]>([]);
     const [totalPages, setTotalPages] = useState(0);
 

@@ -69,7 +69,7 @@ export const Input = ({
                 className={clsx(
                     'bg-inherit border border-[#d9d9d9] py-[11px] px-[10px] text-[12px] text-black/70 w-full 2xl:p-[14px] 2xl:text-[16px]',
                     {
-                        '': errors[name] 
+                        '': errors[name]
                     }
                 )}
                 {...rest}

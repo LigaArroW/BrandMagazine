@@ -10,17 +10,17 @@ interface IPropsIcon {
     onClick?: () => void;
 }
 
-export const Icon = ({ 
-    src, 
-    className, 
-    size = 24, 
+export const Icon = ({
+    src,
+    className,
+    size = 24,
     fill = 'transparent',
     stroke,
     onClick
 }: IPropsIcon) => {
     return (
-        <SVG  
-            className={clsx('icon', className)} 
+        <SVG
+            className={clsx('icon', className)}
             src={src}
             onClick={onClick}
             beforeInjection={(svg) => {

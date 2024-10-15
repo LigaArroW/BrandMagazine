@@ -205,7 +205,7 @@ const Filter: React.FC<IFilter> = ({ colors, categories }) => {
                         colors.map((color) => (
                             <span
                                 key={color}
-                                className={`uppercase 
+                                className={`uppercase
                                     cursor-pointer
                                      underline
                                      text-[10px]

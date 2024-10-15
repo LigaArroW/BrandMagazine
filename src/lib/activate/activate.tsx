@@ -20,7 +20,7 @@ export async function activate(uid: string, token: string) {
                 error:'Данный аккаунт уже активирован'
             }
         }
-        
+
         if(!resp.ok) {
             return {
                 success: false,
@@ -36,9 +36,6 @@ export async function activate(uid: string, token: string) {
 
     } catch (error) {
         console.log(error);
-
-
     }
-
 
 }

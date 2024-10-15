@@ -22,7 +22,7 @@ const RecomendedProducts: React.FC<IRecomendedProductsProps> = ({ id, isCart = f
             if (isCart || id == undefined) {
                 const ids = cart.map((item) => item.product.id)
                 const res = await getRecommendedProducts(ids)
-                
+
                 if (res) setRecomendedProducts(res)
             }
 

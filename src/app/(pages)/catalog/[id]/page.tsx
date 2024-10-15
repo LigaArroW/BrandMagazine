@@ -43,19 +43,19 @@ export default async function Page({ params }: { params: { id: string } }) {
                             </div>
                         </div>
                         <div className="flex flex-col gap-[16px] mb-[23px] xl:mb-[20xp]">
-                            <p className="text-middleGray uppercase font-[700] 
+                            <p className="text-middleGray uppercase font-[700]
                             text-[12px]">Бренд: <span
                                     className="text-heavyGray text-[15px]"
                                 >{product.brand}</span></p>
                             {product?.color &&
-                                <p className="text-middleGray uppercase font-[700] 
+                                <p className="text-middleGray uppercase font-[700]
                                 text-[12px]">Цвет: <span
                                         className="text-heavyGray text-[15px]"
                                     >{product.color}</span></p>
                             }
                             {product?.sizes?.length > 1 &&
                                 <>
-                                    <p className="text-middleGray select-none uppercase font-[700] 
+                                    <p className="text-middleGray select-none uppercase font-[700]
                                     text-[12px]
                                     ">Размер</p>
                                     <div className="flex gap-[8px]">

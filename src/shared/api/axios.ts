@@ -11,7 +11,6 @@ axiosApi.interceptors.request.use(
     }
 );
 
-
 // Тут ошибка, токен не передается
 axiosApi.interceptors.response.use(
     (config) => {
@@ -19,7 +18,7 @@ axiosApi.interceptors.response.use(
     },
     async (error) => {
         const originalRequest = {...error.config};
-        originalRequest._isRetry = true; 
+        originalRequest._isRetry = true;
         if (error.response.status === 401 && error.config && !error.config._isRetry) {
             try {
                 const resp = await axiosApi.post(process.env.APP_API_URL_REFRESH || "");

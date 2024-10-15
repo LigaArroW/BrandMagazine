@@ -16,7 +16,7 @@ export default function Favorites() {
             <div className="container">
                 <div className="row">
                     <div className="page__title">Избранное</div>
-                    {accessToken ? 
+                    {accessToken ?
                         <FavoritesList />
                         :
                         <>

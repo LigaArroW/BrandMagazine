@@ -20,7 +20,7 @@ export default function Header({light = false}: any) {
 
    if (light || showBurger)
       cssClass += " Header_light"
-   
+
    if (showBurger)
       cssClass += " Header_show-burger"
 

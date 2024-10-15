@@ -17,7 +17,7 @@ export const Checkbox = () => {
                 fill="white"
                 className={clsx("hidden",{
                     "!block": enabled
-                })} 
+                })}
             />
         </CheckboxWrapper>
     )

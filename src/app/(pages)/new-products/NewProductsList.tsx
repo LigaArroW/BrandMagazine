@@ -20,7 +20,7 @@ export default function NewProductsList() {
     const [totalPages, setTotalPages] = useState(0);
 
     const loadProducts = async () => {
-        const qu = queryString.stringify({...filter, 
+        const qu = queryString.stringify({...filter,
             ordering: '-created_at',
             limit: limit
         }, {

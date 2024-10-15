@@ -65,7 +65,7 @@
       $row-length: 4;
       &__list {
         grid-template-columns: repeat($row-length, 1fr);
-        
+
         > div {
           @include remove-outer-borders($row-length, 16);
         }
@@ -76,7 +76,7 @@
       $row-length: 2;
       &__list {
         grid-template-columns: repeat($row-length, 1fr);
-        
+
         > div {
           @include remove-outer-borders($row-length, 16);
         }
@@ -87,7 +87,7 @@
       $row-length: 2;
       &__list {
         grid-template-columns: repeat($row-length, 1fr);
-        
+
         > div {
           @include remove-outer-borders($row-length, 16);
         }

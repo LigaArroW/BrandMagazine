@@ -29,7 +29,6 @@ const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id, product }) => {
             product: { id: Number(id), ...product },
             quantity: quantity,
             color: product.color,
-            
         })
 
         // setCart(prev => [...prev, {
@@ -94,7 +93,7 @@ const AddCartFavorite: React.FC<IAddCartFavorite> = ({ id, product }) => {
                 <button type="button"
                     className="uppercase select-none px-[32px] py-[14px] bg-secondary text-white
                     font-[700] text-[12px]
-                    md:px-[48px] md:py-[14px] 
+                    md:px-[48px] md:py-[14px]
                     xl:px-[38px] xl:py-[11px] xl:text-[12px]
                     2xl:px-[50px] 2xl:py-[15px] 2xl:text-[14px]
                     "
