@@ -10,7 +10,7 @@ const PaymentAndDelivery = () => {
             <div className="w-full xl:w-1/2 text-heavyGray flex flex-col gap-6 2xl:gap-[35px]">
                 <h4 className="uppercase font-[600] text-2xl 2xl:text-[32px]">Доставка</h4>
                 <ul className="text-[16px] 2xl:text-[20px]">
-                    <li className="">- Доставка в приделах МКАД бесплатно</li>
+                    <li className="">- Доставка в пределах МКАД бесплатно</li>
                     <li className="">- За МКАД и МО до 2000р</li>
                     <li className="">- По России 100% предоплата, доставка осуществляется через СДЭК</li>
                 </ul>

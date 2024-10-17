@@ -111,7 +111,7 @@ const DeliveryOptions: React.FC<IDeliveryOptions> = ({ payment = false }) => {
                                 <span className={`absolute size-[10px] rounded-[50%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${deliveryIndex === index ? 'bg-[#8A8A8A]' : 'bg-white'}`} />
                             </p>
                             <p
-                                className="text-heavyGray break-words text-sm xl:text-xs 2xl:text-sm"
+                                className="text-heavyGray break-words text-sm xl:text-xs 2xl:text-[16px]"
                             >
                                 {item.name}
                                 <span className="font-[900]">

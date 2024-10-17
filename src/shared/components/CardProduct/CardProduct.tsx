@@ -9,11 +9,13 @@ interface ICardProduct {
 }
 
 const CardProduct: React.FC<ICardProduct> = ({ product }) => {
+
+    const link = `/catalog/${product.id}`;
+
     return (
         <div className="w-full h-full flex flex-col gap-[13px]">
             <div className="relative h-5/6">
-                <Link
-                    href={`/catalog/${product.id}`}>
+                <Link href={link}>
                     <Image
                         src={product.main_image.startsWith('http') ? product.main_image : process.env.NEXT_PUBLIC_BACKEND_URL + `${product.main_image}`}
                         alt={product.name}
@@ -32,7 +34,7 @@ const CardProduct: React.FC<ICardProduct> = ({ product }) => {
             </div>
             <p className="text-[8px] mt-auto text-gray-950/70 md:text-[14px] lg-text-[13px] xl:text-[17px]">Артикул: {product.article}</p>
             <div className="flex items-center justify-between text-[9px] text-black md:text-[16px] lg-text-[15px] xl:text-[20px]">
-                <p>{product.name} {product.brand}</p>
+                <p><Link href={link}>{product.name} {product.brand}</Link></p>
                 <p className="whitespace-nowrap">{new Intl.NumberFormat().format(Number(product.price))} p</p>
             </div>
         </div>

@@ -9,7 +9,7 @@
 
    @media only screen and (max-width: 1460px) {
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
       gap: 4vh;
       padding-bottom: 6.2vh;
    }
@@ -70,13 +70,19 @@
             width: 110vh;
          }
          @media only screen and (max-width: 1680px) {
-            height: 50vh;
+            height: 40vh;
             width: 100vh;
          }
+         @media only screen and (max-width: 1460px) {
+            right: -15vh;
+            height: 50vh;
+            width: 75vh;
+         }
          @media only screen and (max-width: 1120px) {
-            right: -32vh;
-            height: 46vh;
-            width: 96vh;
+            right: -15vh;
+            height: 38vh;
+            bottom: -4.5vh;
+            width: 80vh;
          }
          @media only screen and (max-width: 740px) {
             height: 40vh;

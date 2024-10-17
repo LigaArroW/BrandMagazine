@@ -1,13 +1,10 @@
 'use client'
 
-
 import CardProduct from "@/shared/components/CardProduct/CardProduct"
 import { useMainContext } from "@/shared/components/Contex/MainProvider"
 import DeliveryOptions from "@/shared/components/DeliveryOptions/DeliveryOptions"
 import { Icon } from "@/shared/ui/icon"
 import Link from "next/link"
-
-
 
 export default function YourCartPage() {
     const { cart, setCartLS } = useMainContext()
@@ -35,7 +32,7 @@ export default function YourCartPage() {
                             </button>
                             <div className="flex flex-col gap-[5px] md:gap-[9px] xl:gap-[15px]">
                                 {item.size && <p className="text-black uppercase text-[6px] md:text-[10px] 2xl:text-[14px]">{item.size}</p>}
-                                {item.color && <div className="size-[19px] xl:size-[15px] 2xl:size-[20px] bg-white border border-[#8A8A8A]" />}
+                                {/* {item.color && <div className="size-[19px] xl:size-[15px] 2xl:size-[20px] bg-white border border-[#8A8A8A]" />} */}
                                 <div className="flex flex-col items-center  border border-[#8A8A8A]">
                                     <div className="">
                                         <Icon
@@ -60,7 +57,6 @@ export default function YourCartPage() {
                                         />
                                     </div>
 
-
                                 </div>
                             </div>
 
@@ -71,11 +67,15 @@ export default function YourCartPage() {
             <div className="flex flex-col gap-[24px] w-full xl:w-1/2">
                 <div className="flex bor-dot flex-col gap-5 pb-7 md:gap-6 md:pb-6 xl:pb-4 xl:gap-5 2xl:pb-6 2xl:gap-6">
                     <h5 className="uppercase text-black font-[700] text-base  xl:text-xs 2xl:text-base">Сумма заказов</h5>
-                    <ul className="flex flex-col gap-1 w-1/2 xl:w-1/3">
+                    <ul className="flex flex-col gap-3 w-1/2">
                         {cart.map((item) => (
-                            <li key={item.product.id} className="flex justify-between text-black text-xs xl:text-[9px] 2xl:text-xs">
-                                <p className="text-nowrap tracking-[0.99px]">{item.product.name} {item.product.brand}</p>
-                                <p className="text-nowrap tracking-[0.99px]">{new Intl.NumberFormat().format(Number(item.product.price))} р</p>
+                            <li key={item.product.id} className="flex justify-between text-black text-xs xl:text-[9px] 2xl:text-[18px] pb-2 tracking-[0.02em]">
+                                <div className="text-nowrap">
+                                    {item.product.name} {item.product.brand}
+                                </div>
+                                <div className="text-nowrap">
+                                    {new Intl.NumberFormat().format(Number(item.product.price))} р
+                                </div>
                             </li>
                         ))}
                     </ul>

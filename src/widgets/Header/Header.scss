@@ -27,15 +27,15 @@
    }
 
    a {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 500;
       text-decoration: underline;
       text-transform: uppercase;
       transition: opacity .15s;
 
-      @media only screen and (max-width: 1840px) {
-         font-size: 20px;
-      }
+      // @media only screen and (max-width: 1840px) {
+      //    font-size: 20px;
+      // }
       @media only screen and (max-width: 1680px) {
          font-size: 18px;
       }
